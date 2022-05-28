@@ -5,4 +5,5 @@ class Deck < ApplicationRecord
   validates :subject, inclusion: { in: %w[science history maths] }
   validates :topic, inclusion: { in: %w[biology chemistry physics] }
   validates :level, inclusion: { in: %w[ks1 ks2 gcse] }
+  validates :name, uniqueness: { scope: :user }
 end

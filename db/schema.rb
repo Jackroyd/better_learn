@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_115616) do
   end
 
   create_table "progress_logs", force: :cascade do |t|
-    t.text "correct"
-    t.text "incorrect"
+    t.text "correct", default: [], array: true
+    t.text "incorrect", default: [], array: true
     t.bigint "user_id", null: false
     t.bigint "deck_id", null: false
     t.datetime "created_at", precision: 6, null: false
