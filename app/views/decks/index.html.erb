@@ -1,0 +1,12 @@
+<div class="container">
+  <% @decks.each do |deck| %>
+  <h3><%= deck.name  %></h3>
+  <p><%= deck.subject %></p>
+  <p><%= deck.topic  %></p>
+  <p><%= deck.level %></p>
+  <p><%= deck.ratings.average(:rating) %></p>
+  <p><%= deck.cards.count %></p>
+  <% end %>
+</div>
+
+  <%# <p><%= deck.card.count %>
