@@ -11,19 +11,24 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+          <div class="nav-links">
+            <li class="nav-item nav-active">
+              <%= link_to "Learn", "#", class: "nav-link", id: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Create", "#", class: "nav-link", id: "nav-link" %>
+            </li>
+            <li class="nav-item" id="nav-item">
+              <%= link_to "Search", "#", class: "nav-link", id: "nav-link" %>
+            </li>
+          </div>
           <li class="nav-item dropdown">
-            <div class = "avatar">
+            <div class = "avatar" data-bs-toggle="dropdown">
               <span>JA</span>
             </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "My profile", "#", class: "dropdown-item" %>
+              <%= link_to "Last deck", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
