@@ -1,6 +1,6 @@
 <div class="container">
   <% @decks.each do |deck| %>
-  <h3><%= deck.name  %></h3>
+  <h3><%= link_to deck.name, deck_path(deck) %></h3>
   <p><%= deck.description %></p>
   <p><%= deck.subject %></p>
   <p><%= deck.topic  %></p>
