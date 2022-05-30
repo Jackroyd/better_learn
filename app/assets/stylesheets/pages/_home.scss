@@ -6,3 +6,58 @@ body {
 h1 {
   font-weight: 700;
 }
+
+.home-section {
+  display: flex;
+  align-items: center;
+  height: 70vh;
+}
+
+.main-title{
+  font-size: 3rem;
+}
+
+.home-text {
+  width: 50%;
+  float: left;
+}
+
+.home-text h1 {
+  margin: 16px auto;
+}
+.home-text h2 {
+  margin: 16px auto;
+}
+
+.home-line {
+  width: 65%;
+  overflow: visible;
+  position: absolute;
+  top: 119px;
+  left: 466px;
+}
+
+.home-btn {
+  display: flex;
+  justify-content: space-around;
+  top: 42px;
+  position: relative;
+  left: -104px;
+}
+
+
+
+.path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: dash 1s linear forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
