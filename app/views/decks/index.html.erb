@@ -1,12 +1,13 @@
 <div class="container">
   <% @decks.each do |deck| %>
   <h3><%= deck.name  %></h3>
+  <p><%= deck.description %></p>
   <p><%= deck.subject %></p>
   <p><%= deck.topic  %></p>
   <p><%= deck.level %></p>
   <p><%= deck.ratings.average(:rating) %></p>
   <p><%= deck.cards.count %></p>
+  <% initials = "#{deck.user.first_name[0]}#{deck.user.last_name[0]}" %>
+  <p><%= initials %></p>
   <% end %>
 </div>
-
-  <%# <p><%= deck.card.count %>
