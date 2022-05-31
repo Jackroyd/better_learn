@@ -24,10 +24,13 @@ Deck.destroy_all
 10.times do
   name = Faker::Educator.course_name
   user = User.find(user_list.sample)
+  description = Faker::Quotes::Shakespeare.hamlet_quote
   subject = ["science", "history", "maths"].sample
   topic = ["biology", "physics", "chemistry"].sample
   level = ["ks1", "ks2", "gcse"].sample
-  Deck.create!(name: name, user: user, subject: subject, topic: topic, level: level)
+  Deck.create!(name: name, user: user, subject: subject, topic: topic, level: level, description: description)
+  rating = rand(1..5)
+  Rating.create!(rating: rating, user: User.find(user_list.sample), deck: Deck.last)
   puts "Created deck '#{name}'"
 end
 puts "decks seeded"
