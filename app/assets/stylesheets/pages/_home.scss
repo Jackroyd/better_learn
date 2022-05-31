@@ -40,9 +40,14 @@ h1 {
 .home-btn {
   display: flex;
   justify-content: space-around;
-  top: 42px;
-  position: relative;
-  left: -104px;
+  // top: 42px;
+  // position: relative;
+  // left: -104px;
+}
+
+.home-btn .main-btn {
+  margin-right: 202px;
+    margin-top: 86px;
 }
 
 
@@ -59,5 +64,16 @@ h1 {
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .home-line {
+    display: none;
+  }
+  .home-text {
+    float: none;
+    width: 100%;
   }
 }
