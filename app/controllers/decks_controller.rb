@@ -9,4 +9,9 @@ class DecksController < ApplicationController
     @cards = Card.new
   end
 
+  def new
+    @deck = Deck.new
+    @card = Card.new
+  end
+
 end

@@ -7,4 +7,5 @@ class Deck < ApplicationRecord
   validates :topic, inclusion: { in: %w[biology chemistry physics] }
   validates :level, inclusion: { in: %w[ks1 ks2 gcse] }
   validates :name, uniqueness: { scope: :user }
+  accepts_nested_attributes_for :cards
 end
