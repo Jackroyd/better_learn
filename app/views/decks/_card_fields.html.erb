@@ -1,0 +1,10 @@
+<div class="nested-fields">
+    <%= f.hidden_field :_destroy %>
+    <div>
+        <%= f.input :question, as: :string %>
+        <%= f.input :answer, as: :string %>
+    </div>
+    <div>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+</div>

@@ -7,10 +7,14 @@
   <%= f.input :subject, collection: ['science', 'history', 'maths']  %>
   <%= f.input :topic, collection: ['biology', 'chemistry', 'physics']  %>
   <%= f.input :level, collection: ['ks1', 'ks2', 'gcse']  %>
-  <%= f.simple_fields_for :cards, @deck.cards.build do |q| %>
-  <%= q.input :question, as: :string %>
-  <%= q.input :answer, as: :string %>
+  <fieldset>
+  <legend>Cards:</legend>
+  <%= f.simple_fields_for :cards do |cards_form| %>
+    <% render "card_fields", f: cards_form %>
   <% end %>
+  <%= link_to_add_fields "Add Cards", f, :cards %>
+  </fieldset>
+
   <%= f.button :submit %>
 <% end %>
 </div>
