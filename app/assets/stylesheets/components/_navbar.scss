@@ -5,7 +5,9 @@
   font-family: $font;
   font-weight: 700;
   color: black;
-
+  width: 100%;
+  position: sticky;
+  top: 0px;
 }
 
 .navbar-lewagon .navbar-collapse {
