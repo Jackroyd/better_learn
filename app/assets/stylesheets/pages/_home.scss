@@ -15,6 +15,7 @@ a {
   display: flex;
   align-items: center;
   height: 70vh;
+  position: relative;
 }
 
 .main-title{
@@ -34,25 +35,22 @@ a {
 }
 
 .home-line {
-  width: 65%;
-  overflow: visible;
+  width: 72%;
+  // overflow: visible;
   position: absolute;
-  top: 119px;
-  left: 466px;
+  top: 18%;
+  left: 32%;
 }
 
 .home-btn {
   display: flex;
   justify-content: space-around;
-  // top: 42px;
-  // position: relative;
-  // left: -104px;
+  top: 72%;
+  position: absolute;
+  left: 4%;
+  width: 30%;
 }
 
-.home-btn .main-btn {
-  margin-right: 202px;
-    margin-top: 86px;
-}
 
 .nav-item .avatar {
   border: 3px solid black;
@@ -76,7 +74,7 @@ a {
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1205px) {
   .home-line {
     display: none;
   }
@@ -84,4 +82,11 @@ a {
     float: none;
     width: 100%;
   }
+}
+
+@media (min-width: 1400px) {
+  .home-line {
+    top: 8.5%;
+  }
+
 }
