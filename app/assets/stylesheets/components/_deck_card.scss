@@ -1,11 +1,15 @@
 .deck-card {
-  width: 360px;
+  width: 100%;
   height: 160px;
   background-color: white;
-  border: 3px solid black;
+  border: 1.77px solid black;
   border-radius: 16px;
   margin: 16px;
   padding: 8px 16px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+    }
 }
 
 .deck-card-container {
@@ -84,7 +88,7 @@ i {
 
 .deck-cats {
   background-color: white;
-  border: 3px solid black;
+  border: 1.77px solid black;
   border-radius: 16px;
   min-width: 25%;
   max-width: 35%;
@@ -102,6 +106,7 @@ i {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  column-gap: 0;
 }
 
 .cards a {
@@ -111,34 +116,27 @@ i {
 }
 
 .cards-container {
-  margin: 16px 32px;
+  margin: 16px 56px;
 }
 
 // Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
+@media (min-width: 100px) and (max-width: 440px) {
   .cards {
     grid-template-columns: 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+@media (min-width: 440px) {
   .cards {
     grid-template-columns: 1fr;
   }
 }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .cards {
     grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
