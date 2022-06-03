@@ -11,11 +11,10 @@ class DecksController < ApplicationController
 
   def new
     @deck = Deck.new
-    @card = Card.new
   end
 
   def create
-    @deck = Bike.new(deck_params)
+    @deck = Deck.new(deck_params)
     @user = current_user
     @deck.user = @user
     @deck.save
@@ -26,7 +25,7 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id)
+    params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id])
   end
 
 end

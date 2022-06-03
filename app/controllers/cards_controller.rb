@@ -10,12 +10,13 @@ class CardsController < ApplicationController
     @card.deck = @deck
     @card.user = current_user
     @card.save
+
     redirect_to deck_path(@deck)
   end
 
   private
 
-  def booking_params
+  def card_params
     params.require(:card).permit(:question, :answer, :user_id, :deck_id)
   end
 end
