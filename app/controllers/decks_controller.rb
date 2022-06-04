@@ -27,5 +27,4 @@ class DecksController < ApplicationController
   def deck_params
     params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id])
   end
-
 end
