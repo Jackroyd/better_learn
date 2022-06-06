@@ -2,27 +2,7 @@
   <div class="cards">
     <% @decks.each do |deck| %>
       <%= link_to deck_path(deck) do %>
-        <div class="deck-card">
-          <div class="deck-card-container">
-            <div class="deck-card-top">
-            <div class="dc-top-left">
-              <h1 class="deck-title"><%= deck.name %></h1>
-              <h2 class="card-count"><%= "#{deck.cards.count} cards" %></h2>
-            </div>
-              <div class="rating"><%= render 'shared/stars', score: deck.ratings.average(:rating) %></div>
-              <% initials = "#{deck.user.first_name[0]}#{deck.user.last_name[0]}" %>
-              <div class="avatar"> <span><%= initials.upcase %></span> </div>
-            </div>
-            <div class="deck-card-content">
-              <p class="card-description"><%= deck.description %></p>
-            </div>
-            <div class="deck-card-bottom">
-              <div class="deck-cats"><%= deck.subject %></div>
-              <div class="deck-cats"><%= deck.topic %></div>
-              <div class="deck-cats"><%= deck.level %></div>
-            </div>
-          </div>
-        </div>
+        <%= render 'shared/deck_card', deck: deck %>
       <% end %>
     <% end %>
   </div>
