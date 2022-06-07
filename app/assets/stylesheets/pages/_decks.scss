@@ -10,14 +10,14 @@
   align-items: center;
   padding: 1rem;
   overflow: hidden;
+  margin: 1rem;
 }
 
 .decks-banner h1 {
-  font-size: 2rem;
-  margin-left: 1rem;
+  font-size: 1.5rem;
   flex-grow: 1;
-  line-height: 2rem;
-  max-height: 4rem;
+  line-height: 1.5rem;
+  max-height: 3rem;
   margin-bottom: 0;
 }
 
@@ -26,8 +26,12 @@
   flex-grow: 1;
 }
 
+.decks-btn .main-btn {
+  font-size: 1.3rem;
+}
+
 .decks-line {
-  width: 60%;
+  width: 72%;
   margin-right: 2rem;
 }
 

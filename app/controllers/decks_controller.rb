@@ -27,9 +27,11 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
     @user = current_user
     @deck.user = @user
-    @deck.save
-
-    redirect_to decks_path(@deck)
+    if @deck.save
+      redirect_to deck_path(@deck)
+    else
+      render :new
+    end
   end
 
   private
