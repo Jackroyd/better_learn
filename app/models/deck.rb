@@ -8,4 +8,14 @@ class Deck < ApplicationRecord
   validates :level, inclusion: { in: %w[ks1 ks2 gcse] }
   validates :name, uniqueness: { scope: :user }
   accepts_nested_attributes_for :cards, allow_destroy: true, reject_if: :all_blank
+
+  include PgSearch::Model
+  pg_search_scope :decks_search,
+    against: [ :name, :description],
+    associated_against: {
+      cards: [ :answer, :question ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end

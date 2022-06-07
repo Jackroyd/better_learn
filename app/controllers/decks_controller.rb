@@ -1,6 +1,10 @@
 class DecksController < ApplicationController
   def index
-    @decks = Deck.all
+    if params[:query].present?
+      @decks = Deck.decks_search(params[:query])
+    else
+      @decks = Deck.all
+    end
   end
 
   def show

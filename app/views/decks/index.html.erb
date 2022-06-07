@@ -24,7 +24,16 @@
         <%= link_to "Create Deck", decks_path, class: "main-btn", id: "main-btn-deck" %>
       </div>
     </div>
-
+  <div class="search">
+    <%= form_tag decks_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a deck"
+      %>
+      <%= submit_tag "Search", class: "btn-main" %>
+    <% end %>
+  </div>
   <div class="cards">
     <% @decks.each do |deck| %>
       <%= link_to deck_path(deck) do %>
