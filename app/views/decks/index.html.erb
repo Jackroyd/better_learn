@@ -1,4 +1,4 @@
-<div class="index-container">
+<div class="index-container" data-controller="search-decks">
   <div class="decks-banner">
       <h1>Can't find what you're looking for?</h2>
       <div class="decks-line">
@@ -25,20 +25,17 @@
       </div>
     </div>
   <div class="search">
-    <%= form_tag decks_path, method: :get do %>
+    <%= form_tag decks_path, method: :get, data: { search_decks_target: 'form' } do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        placeholder: "Find a deck"
+        placeholder: "Find a deck",
+        data: {
+          search_decks_target: 'input',
+          action: 'keyup->search-decks#update' }
       %>
       <%= submit_tag "Search", class: "btn-main" %>
     <% end %>
   </div>
-  <div class="cards">
-    <% @decks.each do |deck| %>
-      <%= link_to deck_path(deck) do %>
-        <%= render 'shared/deck_card', deck: deck %>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'shared/deck_cards', decks: @decks %>
 </div>
