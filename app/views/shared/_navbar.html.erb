@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-logo" do %>
+    <%= link_to root_path, class: "navbar-logo" do %>
       <span>LearnBetter</span>
     <% end %>
 
@@ -9,17 +9,17 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav me-auto" data-controller="navlink">
         <% if user_signed_in? %>
           <div class="nav-links">
-            <li class="nav-item nav-active">
-              <%= link_to "Learn", "#", class: "nav-link", id: "nav-link" %>
-            </li>
             <li class="nav-item">
-              <%= link_to "Create", new_deck_path, class: "nav-link", id: "nav-link" %>
+              <%= link_to "Learn", root_path, class: "nav-link", id: "nav-link", data: {navlink_target: "navlink"} %>
             </li>
-            <li class="nav-item" id="nav-item">
-              <%= link_to "Search", "#", class: "nav-link", id: "nav-link" %>
+            <li class="nav-item" >
+              <%= link_to "Create", new_deck_path, class: "nav-link", id: "nav-link", data: {navlink_target: "navlink"} %>
+            </li>
+            <li class="nav-item" >
+              <%= link_to "Search", decks_path, class: "nav-link", id: "nav-link", data: {navlink_target: "navlink"} %>
             </li>
           </div>
           <li class="nav-item dropdown">
@@ -34,7 +34,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link" , id: "nav-link" %>
           </li>
         <% end %>
       </ul>

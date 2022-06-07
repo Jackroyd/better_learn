@@ -1,0 +1,95 @@
+.index-container {
+  margin: 16px 56px;
+}
+
+.decks-banner {
+  border: 3px solid black;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.decks-banner h1 {
+  font-size: 2rem;
+  margin-left: 1rem;
+  flex-grow: 1;
+  line-height: 2rem;
+  max-height: 4rem;
+  margin-bottom: 0;
+}
+
+.decks-btn {
+  margin-right: 1rem;
+  flex-grow: 1;
+}
+
+.decks-line {
+  width: 60%;
+  margin-right: 2rem;
+}
+
+
+
+
+
+// whole card grid------------------------
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  column-gap: 0;
+}
+
+.cards a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media (min-width: 100px) and (max-width: 440px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+@media (min-width: 440px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1200px) {
+  .decks-line {
+    display: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .decks-banner h1 {
+    display: none;
+  }
+  .decks-btn {
+    margin-right: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+}

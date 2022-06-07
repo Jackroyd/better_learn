@@ -1,7 +1,7 @@
-
+<% score = score.nil? ? 0 : score %>
 <% score.round.times do %>
-  <i class="fa-solid fa-star"></i>
+  <i class="star-solid">&#9733;</i>
 <% end %>
 <% (5 - score.round).times do %>
-  <i class="fa-regular fa-star"></i>
+  <i class="star">&#9734;</i>
 <% end %>
