@@ -65,3 +65,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # faker for seeds
 gem 'faker'
+
+# to search
+gem 'pg_search', '~> 2.3.0'

@@ -1,0 +1,7 @@
+  <div class="cards" data-search-decks-target="list">
+    <% decks.each do |deck| %>
+      <%= link_to deck_path(deck) do %>
+        <%= render 'shared/deck_card', deck: deck %>
+      <% end %>
+    <% end %>
+  </div>

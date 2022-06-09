@@ -1,6 +1,16 @@
 class DecksController < ApplicationController
   def index
-    @decks = Deck.all
+    if params[:query].present?
+      @decks = Deck.decks_search(params[:query])
+    else
+      @decks = Deck.all
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'shared/deck_cards', locals: { decks: @decks }, formats: [:html] }
+    end
+
   end
 
   def show
@@ -17,9 +27,11 @@ class DecksController < ApplicationController
     @deck = Deck.new(deck_params)
     @user = current_user
     @deck.user = @user
-    @deck.save
-
-    redirect_to decks_path(@deck)
+    if @deck.save
+      redirect_to deck_path(@deck)
+    else
+      render :new
+    end
   end
 
   private
