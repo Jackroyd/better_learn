@@ -16,7 +16,7 @@
 
 .form-container {
   width: 100%;
-  height: 100vh;
+  // height: 100;
 }
 
 .fields-container {
@@ -133,5 +133,8 @@ fieldset {
 }
 
 .remove_fields {
-
+  color: black;
+  &:hover {
+    color: rgb(40, 39, 39);
+  }
 }
