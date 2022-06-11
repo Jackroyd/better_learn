@@ -1,12 +1,14 @@
-<% @cards.each do | card | %>
-  <div class="scene scene--card">
-    <div class="card">
-      <div class="card__face card__face--front">
-        <h2><%= card.question %></h2>
-      </div>
-      <div class="card__face card__face--back">
-        <h2><%= card.answer %></h2>
+<ul class="list">
+  <% @cards.each do | card | %>
+    <div class="scene scene--card">
+      <div class="card">
+        <div class="card__face card__face--front">
+          <h2><%= card.question %></h2>
+        </div>
+        <div class="card__face card__face--back">
+          <h2><%= card.answer %></h2>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</ul>

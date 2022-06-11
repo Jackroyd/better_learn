@@ -6,6 +6,7 @@
 require('./nested-forms/addFields')
 require('./nested-forms/removeFields')
 require('./card-flip/cardFlip')
+// require('./carousel/carousel')
 
 
 import Rails from "@rails/ujs"
