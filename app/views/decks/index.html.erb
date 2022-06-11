@@ -24,19 +24,26 @@
         <%= link_to "Create Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
       </div>
     </div>
-  <div class="search">
-    <%= image_tag "spy.svg" %>
-    <%= form_tag decks_path, method: :get, data: { search_decks_target: 'form' } do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "search-input",
-        placeholder: "Find a flashcard deck",
-        data: {
-          search_decks_target: 'input',
-          action: 'keyup->search-decks#update' }
-      %>
-      <%= submit_tag "Search", class: "btn-main", style: "display: none;"%>
-    <% end %>
+  <div class="search-section">
+    <div class="search">
+      <%= image_tag "spy.svg" %>
+      <%= form_tag decks_path, method: :get, data: { search_decks_target: 'form' } do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "search-input",
+          placeholder: "Find a flashcard deck",
+          data: {
+            search_decks_target: 'input',
+            action: 'keyup->search-decks#update' }
+        %>
+        <%= submit_tag "Search", class: "btn-main", style: "display: none;"%>
+      <% end %>
+    </div>
+      <div class="filters">
+        <div class="subject"></div>
+        <div class="topic"></div>
+        <div class="level"></div>
+      </div>
   </div>
 
   <%= render 'shared/deck_cards', decks: @decks %>

@@ -1,19 +1,29 @@
-<div class="container pt-3">
-  <h1>Create a new deck:</h1>
-  <%= simple_form_for [ @deck ] do |f| %>
-    <legend>Deck details:</legend>
-      <%= f.input :name, as: :string %>
-      <%= f.input :description, as: :string %>
-      <%= f.input :subject, collection: ['science', 'history', 'maths']  %>
-      <%= f.input :topic, collection: ['biology', 'chemistry', 'physics']  %>
-      <%= f.input :level, collection: ['ks1', 'ks2', 'gcse']  %>
-      <fieldset>
-      <legend>Cards:</legend>
-      <%= f.simple_fields_for :cards do |cards_form| %>
-        <% render "card_fields", f: cards_form %>
-      <% end %>
-      <%= link_to_add_fields "Add Cards", f, :cards %>
-      </fieldset>
-      <div class="btn btn-primary"><%= f.button :submit %></div>
-  <% end %>
+<div class="new-container">
+  <div class="new-header">
+    <h1>Create a new deck</h1>
+  </div>
+
+  <div class="form-container">
+    <%= simple_form_for [ @deck ] do |f| %>
+      <div class="fields-container">
+        <div class="deck-details">
+          <%= f.input :name, as: :string, :input_html => { :id => 'detail-inputs' } %>
+          <%= f.input :description, as: :string, :input_html => { :id => 'detail-inputs' } %>
+          <%= f.input :subject, collection: ['science', 'history', 'maths'], :input_html => { :id => 'detail-inputs' } %>
+          <%= f.input :topic, collection: ['biology', 'chemistry', 'physics'], :input_html => { :id => 'detail-inputs' }  %>
+          <%= f.input :level, collection: ['ks1', 'ks2', 'gcse'], :input_html => { :id => 'detail-inputs' }  %>
+        </div>
+        <div class="new-cards">
+          <fieldset>
+          <legend>Add cards to your deck</legend>
+          <%= f.simple_fields_for :cards do |cards_form| %>
+            <% render "card_fields", f: cards_form, :input_html => { :id => 'card-inputs' } %>
+          <% end %>
+          <%= link_to_add_fields "+", f, :cards %>
+          </fieldset>
+        </div>
+      </div>
+      <div class="main-btn new-deck-btn"><%= f.button :submit %></div>
+    <% end %>
+  </div>
 </div>
