@@ -7,4 +7,8 @@
 <button>Play Deck</button>
 <button>Share Deck</button>
 <%= link_to "Edit Deck", edit_deck_path(@deck) %>
+<%= link_to "Delete #{@deck.name}",
+            deck_path(@deck),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
 </div>
