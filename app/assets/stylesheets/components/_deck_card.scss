@@ -90,8 +90,6 @@ i {
   background-color: white;
   border: 1.77px solid black;
   border-radius: 16px;
-  min-width: 25%;
-  max-width: 35%;
   line-height: 1.5rem;
   height: 1.5rem;
   overflow: hidden;
@@ -100,4 +98,5 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 8px;
 }
