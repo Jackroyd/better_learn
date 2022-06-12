@@ -1,26 +1,39 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-ride="carousel" >
-  <div class="carousel-inner">
-    <% @cards.each_with_index do |card, index| %>
-      <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-          <div class="scene scene--card">
-          <div class="card">
-            <div class="card__face card__face--front">
-              <h2><%= card.question %></h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="carousel-inner">
+          <% @cards.each_with_index do |card, index| %>
+            <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <div class="scene scene--card">
+                <div class="card">
+                  <div class="card__face card__face--front">
+                    <h2><%= card.question %></h2>
+                  </div>
+                  <div class="card__face card__face--back">
+                    <h2><%= card.answer %></h2>
+                  </div>
+              </div>
+              </div>
             </div>
-            <div class="card__face card__face--back">
-              <h2><%= card.answer %></h2>
-            </div>
-        </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
-  <div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span>Previous Card</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span>Next Card</span>
-  </button>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6 text-center">
+        <button class="btn btn-primary">Flip Card</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span>Previous Card</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span>Next Card</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
