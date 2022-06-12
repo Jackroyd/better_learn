@@ -36,14 +36,24 @@
             search_decks_target: 'input',
             action: 'keyup->search-decks#update' }
         %>
+        <%= select_tag :subject, options_for_select(['science', 'maths', 'history']),
+                                  include_blank: 'subject',
+                                  data: {
+                                    search_decks_target: 'filter',
+                                    action: 'change->search-decks#filter' }%>
+        <%= select_tag :topic, options_for_select(['biology', 'chemistry', 'physics']),
+                                  include_blank: 'topic',
+                                  data: {
+                                    search_decks_target: 'filter',
+                                    action: 'change->search-decks#filter' }%>
+        <%= select_tag :level, options_for_select(['ks1', 'ks2', 'gsce']),
+                                  include_blank: 'level',
+                                  data: {
+                                    search_decks_target: 'filter',
+                                    action: 'change->search-decks#filter' }%>
         <%= submit_tag "Search", class: "btn-main", style: "display: none;"%>
       <% end %>
     </div>
-      <div class="filters">
-        <div class="subject"></div>
-        <div class="topic"></div>
-        <div class="level"></div>
-      </div>
   </div>
 
   <%= render 'shared/deck_cards', decks: @decks %>

@@ -6,6 +6,16 @@ class DecksController < ApplicationController
       @decks = Deck.all
     end
 
+    if params[:subject].present?
+      @decks = Deck.decks_filter(params[:subject])
+    elsif params[:topic].present?
+      @decks = Deck.decks_filter(params[:topic])
+    elsif params[:level].present?
+      @decks = Deck.decks_filter(params[:level])
+    else
+      @decks = Deck.all
+    end
+
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: 'shared/deck_cards', locals: { decks: @decks }, formats: [:html] }

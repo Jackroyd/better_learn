@@ -18,4 +18,9 @@ class Deck < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+    pg_search_scope :decks_filter,
+    against: [ :subject, :level, :topic],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
