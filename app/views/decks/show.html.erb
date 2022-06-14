@@ -18,10 +18,11 @@
         <%= link_to "Edit Deck", edit_deck_path(@deck), class: "main-btn", id: "main-btn-deck" %>
       </div>
       <br>
-      <div class="decks-btn delete-btn">
-        <%= link_to "Delete Deck #{@deck.name}",
+      <div class="decks-btn">
+        <%= link_to "Delete Deck",
               deck_path(@deck),
               method: :delete,
+              class: "delete-btn",
               data: { confirm: "Are you sure?" } %>
       </div>
       <br>
