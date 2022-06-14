@@ -1,10 +1,18 @@
 <div class=container>
 <h1><%= @deck.name %></h1>
 <h3><%= @deck.description %></h3>
-<h3>Q:<%= @deck.cards[0].question %>?</h3>
-<h3>Q:<%= @deck.cards[1].question %>?</h3>
-<h3>Q:<%= @deck.cards[2].question %>?</h3>
+<% @deck.cards.first(3).each do |card| %>
+  <h3>Q:<%= card.question %>?</h3>
+  <h3>Q:<%= card.answer %>?</h3>
+<% end %>
 <%= link_to "Play Deck", deck_cards_path(@deck) %>
+<button>Play Deck</button>
 <button>Share Deck</button>
-<%= link_to "Edit Deck", edit_deck_path(@deck) %>
+<% if current_user == @deck.user %>
+  <%= link_to "Edit Deck", edit_deck_path(@deck) %>
+  <%= link_to "Delete #{@deck.name}",
+              deck_path(@deck),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+<% end %>
 </div>

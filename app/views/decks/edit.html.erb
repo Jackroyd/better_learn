@@ -1,10 +1,9 @@
 <div class="new-container">
   <div class="new-header">
-    <h1>Create a new deck</h1>
+    <h1>Edit <%= @deck.name %></h1>
   </div>
-
   <div class="form-container">
-    <%= simple_form_for [ @deck ] do |f| %>
+    <%= simple_form_for [ @deck ], url: deck_path(@deck), method: :patch, local: true do |f| %>
       <div class="fields-container">
         <div class="deck-details">
           <%= f.input :name, as: :string, :input_html => { :id => 'detail-inputs' } %>

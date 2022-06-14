@@ -35,7 +35,10 @@
   font-size: 1.3rem;
   border: 1.77px solid black;
   border-radius: 14px;
-  height: 56px;
+  min-height: 56px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  overflow: hidden;
   padding: 8px 1rem;
   display: flex;
   width: 100%;
@@ -44,7 +47,7 @@
     outline-offset: 0;
     outline: 0;
    }
-}
+  }
 
 legend {
   font-weight: 700;
@@ -57,10 +60,20 @@ legend {
   padding: 1rem;
   position: sticky;
   top: 80px;
-  height: 71vh;
+  height: 72vh;
+  overflow: hidden;
+  margin: 1rem;
 }
 
 .new_deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.edit_deck {
   display: flex;
   flex-direction: column;
   align-items: center;

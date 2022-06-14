@@ -24,7 +24,8 @@ a {
 
 .home-text {
   width: 50%;
-  float: left;
+  position: absolute;
+  top: 140px;
 }
 
 .home-text h1 {
@@ -35,7 +36,7 @@ a {
 }
 
 .home-line {
-  width: 72%;
+  width: 800px;
   // overflow: visible;
   position: absolute;
   top: 104px;
