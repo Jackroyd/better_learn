@@ -5,7 +5,7 @@
   <h3>Q:<%= card.question %>?</h3>
   <h3>Q:<%= card.answer %>?</h3>
 <% end %>
-
+<%= link_to "Play Deck", deck_cards_path(@deck) %>
 <button>Play Deck</button>
 <button>Share Deck</button>
 <% if current_user == @deck.user %>

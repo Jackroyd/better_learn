@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
     resources :decks do
-      resources :cards, only: [ :new, :create, :edit, :update ]
+      resources :cards, only: [ :new, :create, :edit, :update, :index ]
     end
 end
 

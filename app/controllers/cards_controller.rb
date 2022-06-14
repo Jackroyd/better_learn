@@ -1,4 +1,9 @@
 class CardsController < ApplicationController
+  def index
+    @deck = Deck.find(params[:deck_id])
+    @cards = @deck.cards
+  end
+
   def new
     @deck = Deck.find(params[:deck_id])
     @card = Card.new
