@@ -1,12 +1,12 @@
-<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-ride="carousel" >
-  <div class="container">
+<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-ride="carousel"  >
+  <div class="container" data-controller="flip-button">
     <div class="row">
       <div class="col-12">
         <div class="carousel-inner">
           <% @cards.each_with_index do |card, index| %>
             <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
                 <div class="scene scene--card">
-                <div class="card">
+                <div id="flipCard<%= card.id %>" class="card" data-flip-button-target="card" data-card="flipCard<%= card.id %>">
                   <div class="card__face card__face--front">
                     <h2><%= card.question %></h2>
                   </div>
@@ -22,7 +22,8 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-6 text-center">
-        <button class="btn btn-primary">Flip Card</button>
+        <button class="btn btn-primary"
+                data-action="click->flip-button#flip">Flip Card</button>
       </div>
     </div>
     <div class="row">
