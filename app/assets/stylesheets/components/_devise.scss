@@ -1,0 +1,61 @@
+.devise-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.devise-content {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.devise-form {
+  border-radius: 16px;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.75);
+  width: 40%;
+  max-width: 348px;
+  padding: 1rem;
+  .form-control {
+    background-color: white;
+    border: 1.77px solid black;
+    border-radius: 12px;
+  }
+  fieldset {
+    align-items: flex-start;
+    .form-check-input {
+      border: 1.77 solid black;
+    }
+  }
+  .main-btn {
+    padding: 0;
+    font-size: 1.2rem;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  a {
+    color: black;
+    &:hover {
+      color: rgb(54, 54, 54);
+    }
+  }
+}
+
+.devise-header {
+  width: 40%;
+  word-wrap: normal;
+}
+
+.devise-header {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
