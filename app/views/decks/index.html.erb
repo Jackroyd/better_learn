@@ -25,35 +25,37 @@
       </div>
     </div>
   <div class="search-section">
-    <div class="search">
-      <%= image_tag "spy.svg" %>
       <%= form_tag decks_path, method: :get, data: { search_decks_target: 'form' } do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "search-input",
-          placeholder: "Find a flashcard deck",
-          data: {
-            search_decks_target: 'input',
-            action: 'keyup->search-decks#update' }
-        %>
-        <%= select_tag :subject, options_for_select(['science', 'maths', 'history']),
-                                  include_blank: 'subject',
-                                  data: {
-                                    search_decks_target: 'filter',
-                                    action: 'change->search-decks#filter' }%>
-        <%= select_tag :topic, options_for_select(['biology', 'chemistry', 'physics']),
-                                  include_blank: 'topic',
-                                  data: {
-                                    search_decks_target: 'filter',
-                                    action: 'change->search-decks#filter' }%>
-        <%= select_tag :level, options_for_select(['ks1', 'ks2', 'gsce']),
-                                  include_blank: 'level',
-                                  data: {
-                                    search_decks_target: 'filter',
-                                    action: 'change->search-decks#filter' }%>
+        <div class="search">
+          <%= image_tag "spy.svg" %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "search-input",
+            placeholder: "Find a flashcard deck",
+            data: {
+              search_decks_target: 'input',
+              action: 'keyup->search-decks#update' }
+          %>
+        </div>
+        <div class="filters">
+          <%= select_tag :subject, options_for_select(['science', 'maths', 'history']),
+                                    include_blank: 'subject',
+                                    data: {
+                                      search_decks_target: 'filter',
+                                      action: 'change->search-decks#filter' }%>
+          <%= select_tag :topic, options_for_select(['biology', 'chemistry', 'physics']),
+                                    include_blank: 'topic',
+                                    data: {
+                                      search_decks_target: 'filter',
+                                      action: 'change->search-decks#filter' }%>
+          <%= select_tag :level, options_for_select(['ks1', 'ks2', 'gsce']),
+                                    include_blank: 'level',
+                                    data: {
+                                      search_decks_target: 'filter',
+                                      action: 'change->search-decks#filter' }%>
+        </div>
         <%= submit_tag "Search", class: "btn-main", style: "display: none;"%>
       <% end %>
-    </div>
   </div>
 
   <%= render 'shared/deck_cards', decks: @decks %>

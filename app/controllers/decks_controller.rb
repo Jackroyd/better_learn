@@ -1,20 +1,22 @@
 class DecksController < ApplicationController
   def index
     if params[:query].present?
-      @decks = Deck.decks_search(params[:query])
+      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level]).decks_search(params[:query])
     else
-      @decks = Deck.all
+      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level])
     end
 
-    if params[:subject].present?
-      @decks = Deck.decks_filter(params[:subject])
-    elsif params[:topic].present?
-      @decks = Deck.decks_filter(params[:topic])
-    elsif params[:level].present?
-      @decks = Deck.decks_filter(params[:level])
-    else
-      @decks = Deck.all
-    end
+
+
+    # if params[:subject].present?
+    #   @decks = Deck.decks_filter(params[:subject])
+    # elsif params[:topic].present?
+    #   @decks = Deck.decks_filter(params[:topic])
+    # elsif params[:level].present?
+    #   @decks = Deck.decks_filter(params[:level])
+    # else
+    #   @decks = Deck.all
+    # end
 
     respond_to do |format|
       format.html # Follow regular flow of Rails

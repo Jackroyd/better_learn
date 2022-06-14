@@ -9,17 +9,24 @@ class Deck < ApplicationRecord
   validates :name, uniqueness: { scope: :user }
   accepts_nested_attributes_for :cards, allow_destroy: true, reject_if: :all_blank
 
+  def self.by_sub_top_lev(subject = nil, topic = nil, level = nil)
+    return where(subject: subject, topic: topic, level: level) if subject && topic && level
+    return where(topic: topic, level: level) if topic && level
+    return where(subject: subject, level: level) if subject && level
+    return where(subject: subject, topic: topic) if subject && topic
+    return where(subject: subject) if subject
+    return where(topic: topic) if topic
+    return where(level: level) if level
+
+    all
+  end
+
   include PgSearch::Model
   pg_search_scope :decks_search,
     against: [ :name, :description],
     associated_against: {
       cards: [ :answer, :question ]
     },
-    using: {
-      tsearch: { prefix: true }
-    }
-    pg_search_scope :decks_filter,
-    against: [ :subject, :level, :topic],
     using: {
       tsearch: { prefix: true }
     }

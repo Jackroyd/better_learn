@@ -34,9 +34,35 @@
   width: 72%;
   margin-right: 2rem;
 }
+ .search-section {
+   form {
+     display: flex;
+     justify-content: space-between;
+   }
 
+   select {
+    margin: 1rem;
+    background-color: white;
+    font-size: 1.3rem;
+    border: 3px solid black;
+    border-radius: 16px;
+    height: 56px;
+    padding: 8px 1rem;
+    width: 14%;
+    &:focus-visible {
+      outline-offset: 0;
+      outline: 0;
+     }
+   }
 
-
+   .filters {
+     display: flex;
+     justify-content: space-between;
+     select {
+       width: 33%;
+     }
+   }
+ }
 
 
 // whole card grid------------------------
@@ -95,5 +121,27 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
+  }
+  .decks-banner {
+    border: none;
+  }
+}
+@media (max-width: 900px) {
+  .search-section {
+    form {
+      display: block;
+      width: 100%;
+    }
+    .search {
+      width: 100%;
+      margin: 1rem 0;
+    }
+    .filters {
+      width: 100%;
+    }
+    select {
+      width: 100%;
+      margin: 1rem 0;
+    }
   }
 }
