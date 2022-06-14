@@ -45,3 +45,39 @@ Deck.all.each do |deck|
 end
 
 puts "seeding complete"
+
+#######################################################
+# require "nokogiri"
+# require "open-uri"
+
+
+# url = "https://www.chegg.com/flashcards/subjects"
+# content = URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+# doc = Nokogiri::HTML(content)
+# doc.search(".sc-16yfi4m-3").each do |sub|
+#   subject_link = sub['href']
+#   url_sub = "https://www.chegg.com#{subject_link}"
+#   content = URI.open(url_sub, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+#   doc = Nokogiri::HTML(content)
+#   doc.search('.o0oozh-0').each do |deck|
+#     deck_link = deck['href']
+#     content = URI.open(deck_link, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+#     doc = Nokogiri::HTML(content)
+#     subject = doc.search('.eQcgIs span').text.strip
+#     topic = doc.search('.hJCkqP span').text.strip
+#     deck.search('.bwjqlo-0').each do |card|
+#       puts card
+#     end
+#   end
+# end
+
+# url = "https://www.flashcardmachine.com/religion-chapter19.html#cards"
+# content = URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+# doc = Nokogiri::HTML(content)
+
+# doc.search('tr')[1..].each do |card|
+#   card.search("td tr td b").each_slice(2) do |q,a|
+#     puts "Q: #{q}"
+#     puts "A: #{a}"
+#   end
+# end
