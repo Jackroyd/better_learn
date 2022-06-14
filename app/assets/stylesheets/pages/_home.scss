@@ -8,7 +8,7 @@ h1 {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .home-section {
@@ -24,7 +24,8 @@ a {
 
 .home-text {
   width: 50%;
-  float: left;
+  position: absolute;
+  top: 140px;
 }
 
 .home-text h1 {
@@ -35,7 +36,7 @@ a {
 }
 
 .home-line {
-  width: 72%;
+  width: 800px;
   // overflow: visible;
   position: absolute;
   top: 104px;
@@ -86,7 +87,7 @@ a {
 
 @media (min-width: 1400px) {
   .home-line {
-    top: 8.5%;
+    top: 104px;
   }
 
 }

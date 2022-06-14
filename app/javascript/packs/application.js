@@ -5,6 +5,8 @@
 
 require('./nested-forms/addFields')
 require('./nested-forms/removeFields')
+require('./card-flip/cardFlip')
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

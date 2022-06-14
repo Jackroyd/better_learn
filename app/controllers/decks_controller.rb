@@ -1,10 +1,22 @@
 class DecksController < ApplicationController
   def index
     if params[:query].present?
-      @decks = Deck.decks_search(params[:query])
+      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level]).decks_search(params[:query])
     else
-      @decks = Deck.all
+      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level])
     end
+
+
+
+    # if params[:subject].present?
+    #   @decks = Deck.decks_filter(params[:subject])
+    # elsif params[:topic].present?
+    #   @decks = Deck.decks_filter(params[:topic])
+    # elsif params[:level].present?
+    #   @decks = Deck.decks_filter(params[:level])
+    # else
+    #   @decks = Deck.all
+    # end
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
@@ -34,9 +46,33 @@ class DecksController < ApplicationController
     end
   end
 
+  def edit
+    @deck = Deck.find(params[:id])
+  end
+
+  def update
+    @deck = Deck.find(params[:id])
+    @deck.update(deck_params)
+    if @deck.save
+      redirect_to deck_path(@deck)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @deck = Deck.find(params[:id])
+    @deck.destroy
+    if @deck.destroyed?
+      redirect_to decks_path
+    else
+      redirect_to deck_path(@deck)
+    end
+  end
+
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id])
+    params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id, :_destroy])
   end
 end

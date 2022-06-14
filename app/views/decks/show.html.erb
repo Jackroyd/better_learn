@@ -1,10 +1,38 @@
 <div class=container>
-<h1><%= @deck.name %></h1>
-<h3><%= @deck.description %></h3>
-<h3>Q:<%= @deck.cards[0].question %>?</h3>
-<h3>Q:<%= @deck.cards[1].question %>?</h3>
-<h3>Q:<%= @deck.cards[2].question %>?</h3>
-<button>Play Deck</button>
-<button>Share Deck</button>
-<%= link_to "Edit Deck", edit_deck_path(@deck) %>
+  <div class="decks-banner">
+  <div class="col-6">
+    <br>
+    <h1 style="font-size:50px;"><%= @deck.name %></h1>
+    <br>
+    <h3><%= @deck.description %></h3>
+    <br>
+     <div class="decks-btn">
+        <%= link_to "Play Deck", deck_cards_path(@deck), class: "main-btn", id: "main-btn-deck" %>
+      </div>
+      <br>
+      <div class="decks-btn">
+        <%= link_to "Share Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
+      </div>
+      <br>
+      <div class="decks-btn">
+        <%= link_to "Edit Deck", edit_deck_path(@deck), class: "main-btn", id: "main-btn-deck" %>
+      </div>
+      <br>
+      <div class="decks-btn">
+        <%= link_to "Delete Deck",
+              deck_path(@deck),
+              method: :delete,
+              class: "delete-btn",
+              data: { confirm: "Are you sure?" } %>
+      </div>
+      <br>
+      <p>Rate this deck *****</p>
+  </div>
+
+  <div class="col-6">
+    <%= render 'shared/preview_card', decks: @decks%>
+    <br>
+    <%= render 'shared/stats_card', decks: @decks%>
+
+  </div>
 </div>
