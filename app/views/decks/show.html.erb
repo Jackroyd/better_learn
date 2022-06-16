@@ -1,5 +1,5 @@
 <div class=container>
-  <div class="decks-banner">
+  <div class="show-container">
   <div class="col-6">
     <br>
     <h1 style="font-size:50px;"><%= @deck.name %></h1>
@@ -26,13 +26,12 @@
               data: { confirm: "Are you sure?" } %>
       </div>
       <br>
-      <p>Rate this deck *****</p>
   </div>
 
   <div class="col-6">
-    <%= render 'shared/preview_card', decks: @decks%>
+    <%= render 'shared/preview_card', deck: @deck, cards: @cards%>
     <br>
-    <%= render 'shared/stats_card', decks: @decks%>
+    <%= render 'shared/stats_card', deck: @deck%>
 
   </div>
 </div>
