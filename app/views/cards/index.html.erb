@@ -5,15 +5,33 @@
         <div class="carousel-inner">
           <% @cards.each_with_index do |card, index| %>
             <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                <div class="scene scene--card">
-                <div id="flipCard<%= card.id %>" class="card" data-flip-button-target="card" data-card="flipCard<%= card.id %>">
+              <div class="scene scene--card">
+                <div id="flipCard<%= card.id %>" class="flash-card" data-flip-button-target="card" data-card="flipCard<%= card.id %>">
                   <div class="card__face card__face--front">
-                    <h2><%= card.question %></h2>
+                    <div class="fc-content">
+                      <h2 class="fc-header"> <%= @deck.name %></h2>
+                      <p class="fc-qa"><%= "Q.#{card.question}" %></p>
+                      <div class="fc-bottom">
+                        <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                        <div class="counter">
+                        <%= "#{index+1}/#{@deck.cards.count}" %>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="card__face card__face--back">
-                    <h2><%= card.answer %></h2>
+                    <div class="fc-content">
+                      <h2 class="fc-header"> <%= @deck.name %></h2>
+                      <p class="fc-qa"><%= "A.#{card.answer}" %></p>
+                      <div class="fc-bottom">
+                        <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                        <div class="counter">
+                        <%= "#{index+1}/#{@deck.cards.count}" %>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-              </div>
+                </div>
               </div>
             </div>
           <% end %>
@@ -22,16 +40,16 @@
     </div>
     <div class="row justify-content-center">
       <div class="col-6 text-center">
-        <button class="btn btn-primary"
+        <button class="main-btn"
                 data-action="click->flip-button#flip">Flip Card</button>
       </div>
     </div>
     <div class="row">
       <div class="col-12">
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span>Previous Card</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
           <span>Next Card</span>
         </button>
       </div>
