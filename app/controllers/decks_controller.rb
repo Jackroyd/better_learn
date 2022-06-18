@@ -28,7 +28,7 @@ class DecksController < ApplicationController
   def show
     @deck = Deck.find(params[:id])
     @rating = Rating.new
-    @cards = Card.new
+    @cards = @deck.cards
   end
 
   def new
