@@ -24,7 +24,7 @@
           </div>
           <li class="nav-item dropdown">
             <div class = "avatar" data-bs-toggle="dropdown">
-              <span>JA</span>
+              <span><%= "#{current_user.first_name.upcase[0]}#{current_user.last_name.upcase[0]}" %></span>
             </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile Page", profile_path, class: "dropdown-item" %>

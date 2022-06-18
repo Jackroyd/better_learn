@@ -3,7 +3,7 @@
       <h1 class="preview-title">Preview Question</h1>
       <div class="preview-card-content">
       <h1>Q.</h1>
-      <p class="card-description"><%= deck.cards[0].question %>?</p>
+      <p class="card-description"><%= deck.cards.empty? ? "This deck is empty" : deck.cards[0].question %></p>
       </div>
         <div><%= "1/#{deck.cards.count}" %></div>
   </div>
