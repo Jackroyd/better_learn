@@ -10,11 +10,9 @@
         <%= link_to "Play Deck", deck_cards_path(@deck), class: "main-btn", id: "main-btn-deck" %>
       </div>
       <br>
-      <% if current_user == @deck.user %>
         <div class="decks-btn">
           <%= link_to "Share Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
         </div>
-      <% end %>
       <br>
       <% if current_user == @deck.user %>
         <div class="decks-btn">
@@ -22,6 +20,7 @@
         </div>
       <% end %>
       <br>
+      <% if current_user == @deck.user %>
       <div class="decks-btn">
         <%= link_to "Delete Deck",
               deck_path(@deck),
@@ -29,6 +28,7 @@
               class: "delete-btn",
               data: { confirm: "Are you sure?" } %>
       </div>
+      <% end %>
       <br>
   </div>
 
