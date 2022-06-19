@@ -4,7 +4,7 @@ class CardsController < ApplicationController
     @cards = @deck.cards
     @progress_log = ProgressLog.create(user_id: current_user.id, deck_id: @deck.id)
     @cards.each do |card|
-      @progress_log_details = ProgressLogDetail.create(card_id: card.id, progress_log_id: @progress_log.id)
+      ProgressLogDetail.create(card_id: card.id, progress_log_id: @progress_log.id)
     end
   end
 
