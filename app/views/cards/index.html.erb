@@ -6,7 +6,7 @@
           <% @cards.each_with_index do |card, index| %>
             <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
               <div class="scene scene--card">
-                <div id="flipCard<%= card.id %>" class="flash-card" data-flip-button-target="card" data-card="flipCard<%= card.id %>">
+                <div id="flipCard<%= card.id %>" class="flash-card" data-flip-button-target="card">
                   <div class="card__face card__face--front">
                     <div class="fc-content">
                       <h2 class="fc-header"> <%= @deck.name %></h2>
@@ -21,12 +21,15 @@
                   </div>
                   <div class="card__face card__face--back">
                     <div class="fc-content">
-                      <h2 class="fc-header"> <%= @deck.name %></h2>
+                      <h2 class="fc-header"> <%= @progress_log.id %></h2>
                       <p class="fc-qa"><%= "A.#{card.answer}" %></p>
                       <div class="fc-bottom">
-                        <div class="flip-image"><%= image_tag "flip.svg" %></div>
-                        <div class="counter">
-                        <%= "#{index+1}/#{@deck.cards.count}" %>
+                      <% progress_log_details = ProgressLogDetail.find_by(progress_log_id: @progress_log.id, card_id: card.id) %>
+                        <div class="incorrect" data-controller="progress" data-progress-incorrect-value="false" data-progress-details-value="<%= progress_log_details.id %>" data-progress-cards-value="<%= @cards %>" data-progress-deck-value="<%= @deck.id %>" data-progress-log-value="<%= @progress_log.id %>" data-action="click->progress#incorrect">
+                          <p>Don't Know</p>
+                        </div>
+                        <div class="correct" data-controller="progress" data-progress-correct-value="true"  data-progress-details-value="<%= progress_log_details.id %>" data-progress-cards-value="<%= @cards %>" data-progress-deck-value="<%= @deck.id %>" data-progress-log-value="<%= @progress_log.id %>" data-action="click->progress#correct">
+                          <p>Know it!</p>
                         </div>
                       </div>
                     </div>
@@ -56,3 +59,5 @@
     </div>
   </div>
 </div>
+
+<%# <%= render 'shared/index_stats', locals: { cards: @cards, progress_log: @progress_log }  %>

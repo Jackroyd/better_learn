@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_28_153356) do
+ActiveRecord::Schema.define(version: 2022_06_18_122811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,17 @@ ActiveRecord::Schema.define(version: 2022_05_28_153356) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
+  create_table "progress_log_details", force: :cascade do |t|
+    t.boolean "correct"
+    t.bigint "progress_log_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_progress_log_details_on_card_id"
+    t.index ["progress_log_id"], name: "index_progress_log_details_on_progress_log_id"
+  end
+
   create_table "progress_logs", force: :cascade do |t|
-    t.text "correct", default: [], array: true
-    t.text "incorrect", default: [], array: true
     t.bigint "user_id", null: false
     t.bigint "deck_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -84,6 +92,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_153356) do
   add_foreign_key "decks", "users"
   add_foreign_key "favourites", "decks"
   add_foreign_key "favourites", "users"
+  add_foreign_key "progress_log_details", "cards"
+  add_foreign_key "progress_log_details", "progress_logs"
   add_foreign_key "progress_logs", "decks"
   add_foreign_key "progress_logs", "users"
   add_foreign_key "ratings", "decks"
