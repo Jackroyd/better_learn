@@ -1,3 +1,40 @@
-<%= current_user.first_name %>
-<%= current_user.last_name %>
-<%= link_to "Update your profile", edit_user_registration_path %>
+<div class="container mt-3">
+
+<div class="profile-name">
+   <div class="avatar-lg">
+      <%=current_user.first_name[0]%><%= current_user.last_name[0] %>
+   </div>
+      <h1 class=""><%= current_user.first_name %> <%= current_user.last_name %></h1>
+</div>
+
+<div class="devise-content">
+  <div class="devise-form">
+    <div class="row">
+    <div class="col-6">
+      <h5 class="pt-3">First Name</h5>
+      <div class="form-control">
+        <%= current_user.first_name %>
+      </div>
+      </div>
+      <div class="col-6">
+        <h5 class="pt-3">Last Name</h5>
+        <div class="form-control">
+          <%= current_user.last_name %>
+        </div>
+      </div>
+      </div>
+      <h5 class="pt-3">Email</h5>
+      <div class="form-control">
+        <%= current_user.email %>
+      </div>
+      <p>Decks played <%= progress_log.where(user_id: current_user.id) %></p>
+      <p>Cards answered</p>
+      <p>Success rate</p>
+      <div class="main-btn mt-3 justify-content-center">
+        <%= link_to "Update your profile", edit_user_registration_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
