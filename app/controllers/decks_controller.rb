@@ -6,29 +6,16 @@ class DecksController < ApplicationController
       @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level])
     end
 
-
-
-    # if params[:subject].present?
-    #   @decks = Deck.decks_filter(params[:subject])
-    # elsif params[:topic].present?
-    #   @decks = Deck.decks_filter(params[:topic])
-    # elsif params[:level].present?
-    #   @decks = Deck.decks_filter(params[:level])
-    # else
-    #   @decks = Deck.all
-    # end
-
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: 'shared/deck_cards', locals: { decks: @decks }, formats: [:html] }
     end
-
   end
 
   def show
     @deck = Deck.find(params[:id])
     @rating = Rating.new
-    @cards = Card.new
+    @cards = @deck.cards
   end
 
   def new
@@ -40,6 +27,7 @@ class DecksController < ApplicationController
     @user = current_user
     @deck.user = @user
     if @deck.save
+      flash[:notice] = "Deck created"
       redirect_to deck_path(@deck)
     else
       render :new
@@ -54,6 +42,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     @deck.update(deck_params)
     if @deck.save
+      flash[:notice] = "Deck was updated"
       redirect_to deck_path(@deck)
     else
       render :edit
@@ -64,6 +53,7 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     @deck.destroy
     if @deck.destroyed?
+      flash[:notice] = "Deck deleted"
       redirect_to decks_path
     else
       redirect_to deck_path(@deck)

@@ -1,0 +1,1 @@
+<div class="index-stats"> <%= " total cards: #{@cards.count} You knew: #{ProgressLogDetail.where(progress_log_id: @progress_log, correct: true).count}" %> </div>

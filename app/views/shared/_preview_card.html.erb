@@ -1,17 +1,10 @@
 <div class="preview-card">
-  <div class="deck-card-container">
-    <div class="deck-card-top">
-    <div class="dc-top-left">
-      <h1 class="deck-title">Preview Question</h1>
-    </div>
-    </div>
-    <div class="deck-card-content">
-    <h1>Q.</h1>
-      <p class="card-description"><%= @deck.cards[0].question %>?</p>
-    </div>
-    <div class="deck-card-bottom">
-      <div class="deck-cats"><%= "#{@deck.cards.find_index}/ #{@deck.cards.count}" %></div>
-
-    </div>
+  <div class="preview-card-container">
+      <h1 class="preview-title">Preview Question</h1>
+      <div class="preview-card-content">
+      <h1>Q.</h1>
+      <p class="card-description"><%= deck.cards.empty? ? "This deck is empty" : deck.cards[0].question %></p>
+      </div>
+        <div><%= "1/#{deck.cards.count}" %></div>
   </div>
 </div>

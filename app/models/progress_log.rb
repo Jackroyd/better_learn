@@ -1,5 +1,6 @@
 class ProgressLog < ApplicationRecord
   belongs_to :user
   belongs_to :deck
-  validates :correct, :incorrect, presence: true
+  has_many :progress_log_details
+  # validates :correct, :incorrect, presence: true
 end

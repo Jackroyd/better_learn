@@ -10,91 +10,24 @@
   &:hover {
     transform: scale(1.02);
     }
+h1 {
+  font-size: 1rem;
+}
 }
 
-.deck-card-container {
+.preview-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.preview-card-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
   height: 100%;
-  text-decoration: none;
-}
-
-.deck-card-top {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 40%;
-}
-
-.dc-top-left {
-  max-width: 50%;
-  margin-top: 4px;
-}
-
-.deck-title {
-  color: black;
-  font-size: 1.2rem;
-  white-space: nowrap;
-  text-align: center;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-
-.rating {
-  color: black;
-}
-
-i {
-  font-style: normal;
-  font-family: FontAwesome !important;
-}
-
-.deck-card-content {
-  width: 100%;
-  height: 50%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-count {
-  color: rgba(0, 0, 0, 0.577);
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.card-description {
-  color: black;
-  font-size: 1rem;
-  font-weight: 400;
-  max-width: 100%;
-  word-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.5rem;
-  height: 3rem;
 
 }
 
-
-.deck-card-bottom {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 20%;
-}
-
-.deck-cats {
-  background-color: white;
-  min-width: 25%;
-  max-width: 35%;
-  height: 1.5rem;
-  overflow: hidden;
-  color: black;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.preview-card-content {
+  padding: 1rem;
 }
