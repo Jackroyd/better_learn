@@ -22,9 +22,17 @@ export default class extends Controller {
       body: JSON.stringify(data)
     };
 
+    const knowAfter = document.querySelector(".know-after");
+    const knowBefore = document.querySelector(".know-before");
+    const dontAfter = document.querySelector(".dont-after");
+    const dontBefore = document.querySelector(".dont-before");
     const url = `/progress_log_details/${log_id}`;
     fetch(url, putMethod)
     // .then(response => response.json())
+    .then(knowBefore.classList.add("hidden"))
+    .then(knowAfter.classList.remove("hidden"))
+    .then(dontBefore.classList.remove("hidden"))
+    .then(dontAfter.classList.add("hidden"))
     .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
     .catch(err => console.log(err));
   }
@@ -48,8 +56,16 @@ export default class extends Controller {
       body: JSON.stringify(data)
     };
 
+    const dontAfter = document.querySelector(".dont-after");
+    const dontBefore = document.querySelector(".dont-before");
+    const knowAfter = document.querySelector(".know-after");
+    const knowBefore = document.querySelector(".know-before");
     const url = `/progress_log_details/${log_id}`;
     fetch(url, putMethod)
+    .then(dontBefore.classList.add("hidden"))
+    .then(dontAfter.classList.remove("hidden"))
+    .then(knowBefore.classList.remove("hidden"))
+    .then(knowAfter.classList.add("hidden"))
     // .then(response => response.json())
     .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
     .catch(err => console.log(err));

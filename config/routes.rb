@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :cards, only: [ :new, :create, :edit, :update, :index ]
     end
   resources :progress_log_details, only: [:update]
+  resources :progress_logs, only: [:show]
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
