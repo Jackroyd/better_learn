@@ -1,0 +1,118 @@
+.play-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+
+  .hidden{
+    display: none;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    justify-content: center;
+    perspective: 300px;
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0px;
+    width: 400px;
+    height: 260px;
+    border-radius: 12px;
+    position: absolute;
+    transition: all .3s ease-in;
+
+    &[data-pos="0"] {
+      z-index: 5;
+    }
+
+    &[data-pos="-1"],
+    &[data-pos="1"] {
+      filter: blur(1px) grayscale(10%);
+    }
+
+    &[data-pos="-1"] {
+      transform: translateX(-50%) translateY(-15%) scale(.85);
+      z-index: 4;
+    }
+
+    &[data-pos="1"] {
+      transform: translateX(50%) translateY(-15%) scale(.85);
+      z-index: 4;
+    }
+
+    &[data-pos="-2"],
+    &[data-pos="2"] {
+      filter: blur(1px) grayscale(20%);
+    }
+
+    &[data-pos="-2"] {
+      transform: translateX(-80%) translateY(-30%) scale(.75);
+      z-index: 3;
+    }
+
+    &[data-pos="2"] {
+      transform: translateX(80%) translateY(-30%) scale(.75);
+      z-index: 3;
+    }
+  }
+}
+
+
+.play-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  .previous-btn {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    width: 30%;
+    overflow: hidden;
+  }
+
+  .next-btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+    width: 30%;
+    overflow: hidden;
+  }
+
+  .next-line {
+    height: 100%;
+  }
+  .pre-line {
+    height: 100%;
+  }
+
+  .prev-text, .next-text {
+    width: 40%;
+  }
+
+  h1 {
+    font-size: 2rem;
+    width: 100%;
+  }
+}
