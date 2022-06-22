@@ -1,11 +1,11 @@
-<div class="play-container" data-controller="end-play">
+<div class="play-container">
   <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-ride="carousel" >
     <div class="container" data-controller="flip-button">
       <div class="row">
         <div class="col-12">
           <div class="carousel-inner">
             <% @cards.each_with_index do |card, index| %>
-              <div class="carousel-item <%= index == 0 ? 'active' : '' %> <%= index == @cards.length-2 ? 'end' : '' %>">
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %> <%= index == @cards.length-1 ? 'end' : '' %>">
                 <div class="scene scene--card">
                   <div id="flipCard<%= card.id %>" class="flash-card" data-flip-button-target="card">
                     <div class="card__face card__face--front">
@@ -13,7 +13,7 @@
                         <h2 class="fc-header"> <%= @deck.name %></h2>
                         <p class="fc-qa"><%= "Q.#{card.question}" %></p>
                         <div class="fc-bottom">
-                          <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                          <div class="flip-image" data-action="click->flip-button#flip"><%= image_tag "flip.svg" %></div>
                           <div class="counter">
                           <%= "#{index+1}/#{@deck.cards.count}" %>
                           </div>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="card__face card__face--back">
                       <div class="fc-content">
-                        <h2 class="fc-header"> <%= @progress_log.id %></h2>
+                        <h2 class="fc-header"> <%= @deck.name %></h2>
                         <p class="fc-qa"><%= "A.#{card.answer}" %></p>
                         <div class="fc-bottom">
                         <% progress_log_details = ProgressLogDetail.find_by(progress_log_id: @progress_log.id, card_id: card.id) %>
@@ -49,14 +49,13 @@
           <button class="main-btn"
                   data-action="click->flip-button#flip">Flip Card</button>
         </div>
-        <%# <%= render 'cards/end_button', progress_log: @progress_log %>
       </div>
       <div class="row">
-        <div class="col-12" data-end-play-target="contain">
+        <div class="col-12">
           <button class="carousel-control-prev control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span>Previous Card</span>
           </button>
-          <button class="carousel-control-next control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" data-end-play-target="next" data-action="click->end-play#endplay">
+          <button class="carousel-control-next control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" data-action="click->end-play#endplay">
             <span>Next Card</span>
           </button>
         </div>
@@ -64,5 +63,7 @@
     </div>
   </div>
 
-  <%# <%= render 'shared/index_stats', locals: { cards: @cards, progress_log: @progress_log }  %>
+  <div class="finish hidden">
+    <%= link_to "end", progress_log_path(@progress_log), class: "main-btn", id: "main-btn-deck" %>
+  </div>
 </div>

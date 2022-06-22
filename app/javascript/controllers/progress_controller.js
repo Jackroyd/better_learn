@@ -9,10 +9,6 @@ export default class extends Controller {
     const cards = e.target.closest(".correct").dataset.progressCardsValue;
     const progress_log = e.target.closest(".correct").dataset.progressLogValue;
     const deck_id = e.target.closest(".correct").dataset.progressDeckValue;
-    // console.log(do_they_know);
-    // console.log(log_id);
-    // console.log(cards);
-    // console.log(progress_log);
     const data = {log_id: log_id, do_they_know: do_they_know, cards: cards, progress_log: progress_log, deck_id: deck_id};
     const putMethod = {
       method: 'PUT',
@@ -22,10 +18,10 @@ export default class extends Controller {
       body: JSON.stringify(data)
     };
 
-    const knowAfter = document.querySelector(".know-after");
-    const knowBefore = document.querySelector(".know-before");
-    const dontAfter = document.querySelector(".dont-after");
-    const dontBefore = document.querySelector(".dont-before");
+    const dontAfter = e.target.closest(".fc-bottom").querySelector(".dont-after");
+    const dontBefore = e.target.closest(".fc-bottom").querySelector(".dont-before");
+    const knowAfter = e.target.closest(".fc-bottom").querySelector(".know-after");
+    const knowBefore = e.target.closest(".fc-bottom").querySelector(".know-before");
     const url = `/progress_log_details/${log_id}`;
     fetch(url, putMethod)
     // .then(response => response.json())
@@ -56,10 +52,10 @@ export default class extends Controller {
       body: JSON.stringify(data)
     };
 
-    const dontAfter = document.querySelector(".dont-after");
-    const dontBefore = document.querySelector(".dont-before");
-    const knowAfter = document.querySelector(".know-after");
-    const knowBefore = document.querySelector(".know-before");
+    const dontAfter = e.target.closest(".fc-bottom").querySelector(".dont-after");
+    const dontBefore = e.target.closest(".fc-bottom").querySelector(".dont-before");
+    const knowAfter = e.target.closest(".fc-bottom").querySelector(".know-after");
+    const knowBefore = e.target.closest(".fc-bottom").querySelector(".know-before");
     const url = `/progress_log_details/${log_id}`;
     fetch(url, putMethod)
     .then(dontBefore.classList.add("hidden"))

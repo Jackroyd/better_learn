@@ -1,3 +1,7 @@
+.carousel {
+  height: 100%;
+}
+
 .scene {
   width: 400px;
   height: 260px;
@@ -90,6 +94,7 @@
     img {
     width: 70%;
     vertical-align: left !important;
+    cursor: pointer;
     }
   }
 }

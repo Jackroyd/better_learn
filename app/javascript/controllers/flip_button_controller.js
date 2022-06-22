@@ -7,6 +7,10 @@ export default class extends Controller {
     console.log("Working")
     console.log(this.cardTarget)
     document.querySelector('.active').firstElementChild.firstElementChild.classList.toggle("is-flipped")
-    // document.querySelector('.active').previousElementSibling.firstElementChild.firstElementChild.classList.remove("is-flipped")
+    const active = document.querySelector(".active");
+    const finish = document.querySelector(".finish")
+    if(active.classList.contains("end")) {
+      finish.classList.remove("hidden")
+    }
   }
 }
