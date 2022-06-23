@@ -28,7 +28,10 @@
             </div>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Profile Page", profile_path, class: "dropdown-item" %>
-              <%= link_to "Last deck", "#", class: "dropdown-item" %>
+              <% @last_log = ProgressLog.where(user_id: current_user.id).last %>
+              <% @last_log = @last_log.nil? ? ProgressLog.last : @last_log %>
+              <% @deck = Deck.find(@last_log.deck_id) %>
+              <%= link_to "Last deck", deck_path(@deck), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
