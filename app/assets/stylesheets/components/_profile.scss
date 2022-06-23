@@ -19,3 +19,10 @@
   width: 100%;
   text-align: center;
 }
+
+.cards-container {
+  display: flex;
+  width: fit-content;
+  overflow-x: auto;
+  margin-left: 10px;
+}
