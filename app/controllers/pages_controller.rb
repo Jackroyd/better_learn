@@ -6,12 +6,11 @@ class PagesController < ApplicationController
 
   def profile
     @progress_logs = ProgressLog.all
-    # Find a count of the project log details rows where
-    # progress log ids match progress logs with the
-    # user_id = current user
-    @progress_log_details = ProgressLogDetail.all
-    # Find a count of all instances where
-    # progress log details.correct = true
-    # / progress log detials.correct = false
+    progress_logs = ProgressLog.where(user: current_user).pluck(:id)
+    @progress_log_details = ProgressLogDetail
+                            .where(progress_log_id: progress_logs, correct: [true, false]).count
+    @correct_cards = ProgressLogDetail
+                     .where(progress_log_id: progress_logs, correct: true).count
+    @total_cards = ((@correct_cards.to_f / @progress_log_details.to_f) * 100).round(0)
   end
 end

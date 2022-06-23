@@ -28,11 +28,11 @@
         <%= current_user.email %>
       </div>
       <div class="statistics">
-        <p>Decks played <%= @progress_logs.where(user_id: current_user).count %></p>
-        <p>Cards answered <%= @progress_logs.joins(:progress_log_details).where(user_id: current_user).select(:card_id).uniq.count %></p>
-        <%# <p>Success rate <%= ((@progress_log_details.correct == true / @progress_log_details.count)*100) %></p>
+        <p>Decks played: <%= @progress_logs.where(user_id: current_user).count %></p>
+        <p>Cards answered: <%= @progress_log_details %></p>
+        <p>Success rate: <%= @total_cards %>%</p>
       </div>
-      <div class="main-btn mt-3 justify-content-center">
+      <div class="main-btn profile-button">
         <%= link_to "Update your profile", edit_user_registration_path %>
       </div>
     </div>
