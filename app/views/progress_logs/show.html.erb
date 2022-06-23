@@ -9,15 +9,15 @@
       </div>
       <div class="end-stats">
         <h2 class="endq">You knew: </h2>
-        <h2 class="enda"><%= @true.count %> cards</h2>
+        <h2 class="enda"><%= @true.count %> card<%=@true.count==1 ? "" : "s" %></h2>
       </div>
       <div class="end-stats">
         <h2 class="endq">You didn't know: </h2>
-        <h2 class="enda"><%= @false.count %> cards</h2>
+        <h2 class="enda"><%= @false.count %> card<%=@false.count==1 ? "" : "s" %></h2>
       </div>
       <div class="end-stats">
         <h2 class="enda">You skipped: </h2>
-        <h2 class="endq"><%= @skip.count %> cards</h2>
+        <h2 class="endq"><%= @skip.count %> card<%=@skip.count==1 ? "" : "s" %></h2>
       </div>
     </div>
     <div class="end-card-container">
@@ -71,10 +71,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <p class="copy-text">I just completed <%= @deck.name %>, follow this link to see if you can Learn Better. <%= "www.letslearnbetter.com/decks/#{@deck.id}" %></p>
+          <p class="copy-text">I just completed <%= @deck.name %>, follow this link to see if you can Learn Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" data-controller="share">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-action="click->share#copy">Copy text</button>
+          <button type="button" class="btn btn-secondary" data-link="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>" data-action="click->share#link">Copy link</button>
         </div>
       </div>
     </div>
