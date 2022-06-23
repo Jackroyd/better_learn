@@ -69,3 +69,6 @@ gem 'nokogiri'
 
 # to search
 gem 'pg_search', '~> 2.3.0'
+
+# for adding share button
+gem 'rails-social-share-button'

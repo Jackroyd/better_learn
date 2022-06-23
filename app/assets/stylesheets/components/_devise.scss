@@ -59,3 +59,11 @@
     font-size: 3.5rem;
   }
 }
+
+.names {
+  display: flex;
+
+  .user_last_name {
+    margin-left: 4px;
+  }
+}
