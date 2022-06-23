@@ -4,6 +4,7 @@ export default class extends Controller {
 
 
   correct(e) {
+    e.stopPropagation();
     const log_id = e.target.closest(".correct").dataset.progressDetailsValue;
     const do_they_know = e.target.closest(".correct").dataset.progressCorrectValue;
     const cards = e.target.closest(".correct").dataset.progressCardsValue;
@@ -34,6 +35,7 @@ export default class extends Controller {
   }
 
   incorrect(e) {
+    e.stopPropagation();
     const log_id = e.target.closest(".incorrect").dataset.progressDetailsValue;
     const do_they_know = e.target.closest(".incorrect").dataset.progressCorrectValue;
     const cards = e.target.closest(".incorrect").dataset.progressCardsValue;

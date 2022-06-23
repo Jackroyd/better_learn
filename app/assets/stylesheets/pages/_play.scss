@@ -33,14 +33,14 @@
     align-items: center;
     justify-content: center;
     font-size: 0px;
-    width: 400px;
-    height: 260px;
+    width: 488px;
+    height: 300px;
     border-radius: 12px;
     position: absolute;
     transition: all .3s ease-in;
 
     &[data-pos="0"] {
-      z-index: 5;
+      z-index: 10;
     }
 
     &[data-pos="-1"],
@@ -49,13 +49,13 @@
     }
 
     &[data-pos="-1"] {
-      transform: translateX(-50%) translateY(-15%) scale(.85);
-      z-index: 4;
+      transform: translateX(-46%) translateY(-16%) scale(.85);
+      z-index: 8;
     }
 
     &[data-pos="1"] {
-      transform: translateX(50%) translateY(-15%) scale(.85);
-      z-index: 4;
+      transform: translateX(46%) translateY(-16%) scale(.85);
+      z-index: 8;
     }
 
     &[data-pos="-2"],
@@ -65,12 +65,21 @@
 
     &[data-pos="-2"] {
       transform: translateX(-80%) translateY(-30%) scale(.75);
-      z-index: 3;
+      z-index: 5;
     }
 
     &[data-pos="2"] {
       transform: translateX(80%) translateY(-30%) scale(.75);
-      z-index: 3;
+      z-index: 5;
+    }
+
+    &[data-pos="3"] {
+      transform: translateX(100%) translateY(-30%) scale(.5);
+      z-index: 1;
+    }
+    &[data-pos="-3"] {
+      transform: translateX(-100%) translateY(-30%) scale(.5);
+      z-index: 1;
     }
   }
 }
@@ -81,6 +90,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 2rem;
 
   .previous-btn {
     display: flex;
@@ -89,6 +99,10 @@
     cursor: pointer;
     width: 30%;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+    &:hover {
+      transform: scale(1.05, 1) translateX(-4px);
+    }
   }
 
   .next-btn {
@@ -98,6 +112,10 @@
     cursor: pointer;
     width: 30%;
     overflow: hidden;
+    transition: all .2s ease-in-out;
+    &:hover {
+      transform: scale(1.05, 1) translateX(4px);
+    }
   }
 
   .next-line {
@@ -115,4 +133,20 @@
     font-size: 2rem;
     width: 100%;
   }
+
+  .play-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 8rem;
+    width: 20rem;
+    align-items: center;
+  }
+
+  .flip-btn, .end-play-btn {
+    width: 16rem;
+    height: 3.2rem;
+    cursor: pointer;
+  }
+
 }
