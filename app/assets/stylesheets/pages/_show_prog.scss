@@ -1,0 +1,110 @@
+.end-container {
+  padding: 2rem 0 2rem 4rem;
+  height: 90vh;
+}
+
+.end-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4rem;
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+}
+
+.end-main-content {
+  display: flex;
+  margin: 2rem 0;
+  height: 75%;
+}
+
+.end-stats-container {
+  height: 100%;
+  width: 33%;
+  background-color: white;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.stats-header {
+  h2 {
+    font-size: 2rem;
+  }
+  width: 100%;
+}
+
+.end-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .endq {
+    text-align: start;
+  }
+  .enda {
+    text-align: end;
+  }
+}
+
+.end-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 66%;
+}
+
+.end-wrong-ans-container {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  align-items: center;
+  min-height: 350px;
+
+  .scene {
+    width: 488px;
+    height: 300px;
+    // border: 1px solid #CCC;
+    margin: 1rem;
+    perspective: 1000px;
+    display: inline-block;
+  }
+
+  .flash-card {
+    width: 488px;
+    height: 300px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+}
+
+.end-bottom {
+  display: flex;
+  justify-content: center;
+  margin-right: 4rem;
+  align-items: center;
+
+  .stars {
+    border: 3px solid black;
+    border-radius: 12px;
+    font-size: 2rem;
+    padding: 4px;
+    margin: 0 1rem;
+    width: 22rem;
+    text-align: center;
+  }
+  .delete-btn, .main-btn {
+    margin: 0 1rem;
+    width: 12rem;
+  }
+}
