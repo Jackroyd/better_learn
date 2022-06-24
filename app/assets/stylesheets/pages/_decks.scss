@@ -60,8 +60,9 @@
    .filters {
      display: flex;
      justify-content: space-between;
+     width: 30%;
      select {
-       width: 33%;
+       width: 50%;
      }
    }
  }
