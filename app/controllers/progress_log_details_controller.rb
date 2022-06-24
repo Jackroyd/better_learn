@@ -9,9 +9,5 @@ class ProgressLogDetailsController < ApplicationController
       progress_log_detail.update!(correct: false)
     end
     progress_log_detail.save!
-    # @cards = Deck.find(params[:deck_id]).cards
-    # # puts @cards.count
-    # # @progress_log = params[:progress_log]
-    # # render partial: 'shared/index_stats', locals: { cards: @cards, progress_log: @progress_log }
   end
 end

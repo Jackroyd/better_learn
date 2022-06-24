@@ -1,7 +1,6 @@
 <div class="end-container">
   <div class="end-header">
       <h1>Great work! You knew <%= @true.count %> out of <%= @deck.cards.count %></h1>
-  </div>
   <div class="end-main-content">
     <div class="end-stats-container">
       <div class="stats-header">
@@ -74,12 +73,11 @@
           <p class="copy-text">I just completed <%= @deck.name %>, follow this link to see if you can Learn Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
         </div>
         <div class="modal-footer" data-controller="share">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-secondary" data-action="click->share#copy">Copy text</button>
-          <button type="button" class="btn btn-secondary" data-link="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>" data-action="click->share#link">Copy link</button>
+          <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn" data-action="click->share#copy">Copy text</button>
+          <button type="button" class="btn" data-link="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>" data-action="click->share#link">Copy link</button>
         </div>
       </div>
     </div>
   </div>
-
 </div>

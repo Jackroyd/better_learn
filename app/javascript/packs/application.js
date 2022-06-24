@@ -13,10 +13,12 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import counterUp from 'counterup2'
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+counterUp.start()
 
 import "controllers"
 import "bootstrap"
