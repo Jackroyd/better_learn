@@ -1,0 +1,60 @@
+<div class="end-container">
+  <div class="end-header">
+      <h1>Great work! You knew <%= @true.count %> out of <%= @deck.cards.count %></h1>
+  </div>
+  <div class="end-main-content">
+    <div class="end-stats-container">
+      <div class="stats-header">
+      <h2>Here's a breakdown of how you did:</h2>
+      </div>
+      <div class="end-stats">
+        <h2 class="endq">You knew: </h2>
+        <h2 class="enda"><%= @true.count %> cards</h2>
+      </div>
+      <div class="end-stats">
+        <h2 class="endq">You didn't know: </h2>
+        <h2 class="enda"><%= @false.count %> cards</h2>
+      </div>
+      <div class="end-stats">
+        <h2 class="enda">You skipped: </h2>
+        <h2 class="endq"><%= @skip.count %> cards</h2>
+      </div>
+    </div>
+    <div class="end-card-container">
+      <h2>You didn't know...</h2>
+      <div class="end-wrong-ans-container" data-controller="flip-button">
+        <% @false.each_with_index do |log, index| %>
+          <div class="scene scene--card">
+            <div class="flash-card" data-flip-button-target="card" data-action="click->flip-button#stats">
+              <div class="card__face card__face--front">
+                <div class="fc-content">
+                  <h2 class="fc-header"> <%= @deck.name %></h2>
+                  <p class="fc-qa"><strong>Q. </strong><%= Card.find(log.card_id).question %></p>
+                  <div class="fc-bottom">
+                    <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                    </div>
+                  </div>
+                </div>
+              <div class="card__face card__face--back">
+                <div class="fc-content">
+                  <h2 class="fc-header"> <%= @deck.name %></h2>
+                  <p class="fc-qa"><strong>A. </strong><%= Card.find(log.card_id).answer %></p>
+                  <div class="fc-bottom">
+                    <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="end-bottom">
+    <div class="stars">
+      Rate deck<%= render 'shared/stars', score: @deck.ratings.average(:rating) %>
+    </div>
+    <%= link_to "Replay Deck", deck_cards_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
+    <%= link_to "Share Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
+  </div>
+</div>

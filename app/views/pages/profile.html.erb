@@ -1,0 +1,80 @@
+<div class="profile-container">
+
+  <div class="profile-container">
+      <div class="profile">
+
+        <div class="profile-name">
+          <div class="avatar-lg">
+              <%=current_user.first_name[0]%><%= current_user.last_name[0] %>
+          </div>
+              <h1 class=""><%= current_user.first_name %> <%= current_user.last_name %></h1>
+        </div>
+
+        <div class="profile-devise-content">
+        <div class="profile-devise-form">
+          <div class="row">
+          <div class="col-6">
+            <h5 class="pt-3">First Name</h5>
+            <div class="profile-form-control">
+              <%= current_user.first_name %>
+            </div>
+            </div>
+            <div class="col-6">
+              <h5 class="pt-3">Last Name</h5>
+              <div class="profile-form-control">
+                <%= current_user.last_name %>
+              </div>
+            </div>
+            </div>
+            <h5 class="pt-3">Email</h5>
+            <div class="profile-form-control">
+              <%= current_user.email %>
+            </div>
+            <div class="statistics">
+              <p>Decks played: <%= @progress_logs.where(user_id: current_user).count %></p>
+              <p>Cards answered: <%= @progress_log_details %></p>
+              <p>Success rate: <%= @total_cards %>%</p>
+            </div>
+            <div class="main-btn profile-button">
+              <%= link_to "Update your profile", edit_user_registration_path %>
+            </div>
+
+          </div>
+
+          <div class="profile-end-wrong-ans-container">
+            <div class="profile-title">
+              <h1>Your Decks:</h1>
+            </div>
+            <div class="profile-card-scroll">
+              <% @decks.each do |deck| %>
+                <div class="profile-deck-card">
+                <div class="deck-card-container">
+                  <div class="deck-card-top">
+                  <div class="dc-top-left">
+                    <h1 class="deck-title"><%= deck.name %></h1>
+                    <h2 class="card-count"><%= "#{deck.cards.count} cards" %></h2>
+                  </div>
+                    <div class="rating"><%= render 'shared/stars', score: deck.ratings.average(:rating) %></div>
+                    <% initials = "#{deck.user.first_name[0]}#{deck.user.last_name[0]}" %>
+                    <div class="avatar"> <span><%= initials.upcase %></span> </div>
+                  </div>
+                  <div class="deck-card-content">
+                    <p class="card-description"><%= deck.description %></p>
+                  </div>
+                  <div class="deck-card-bottom">
+                    <div class="deck-cats"><%= deck.subject %></div>
+                    <div class="deck-cats"><%= deck.topic %></div>
+                    <div class="deck-cats"><%= deck.level %></div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+</div>
