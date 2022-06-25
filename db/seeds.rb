@@ -35,7 +35,11 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
   href = sub['href']
   puts "begining #{href} decks"
   suburl = "https://www.flashcardmachine.com/#{href}"
-  subcontent = URI.open(suburl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+  begin
+    subcontent = URI.open(suburl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+  rescue OpenURI::HTTPError
+    next
+  end
   subdoc = Nokogiri::HTML(subcontent)
 
   num_break = rand(2..10)
@@ -51,7 +55,9 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
       next
     end
     setdoc = Nokogiri::HTML(setcontent)
-    name = setdoc.search('.form_item')[0].search('.field').inner_text.gsub!(/\d|-|\./, "")
+    name = setdoc.search('.form_item')[0].search('.field').inner_text.gsub!(/\d|-|\.|\//, "")
+    break if name.blank?
+    name = name.strip.capitalize
     puts name
     description = setdoc.search('.form_item')[1].search('.field').inner_text
     subject = setdoc.search('.form_item')[3].search('.field').inner_text
