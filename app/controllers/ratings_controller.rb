@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def new
     @deck = Deck.find(params[:deck_id])
     @rating = Rating.new
@@ -22,6 +24,6 @@ class RatingsController < ApplicationController
   private
 
   def rating_params
-    params.require(:rating).permit(:score)
+    params.require(:rating).permit(:score, :user_id, :deck_id)
   end
 end

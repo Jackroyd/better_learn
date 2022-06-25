@@ -2,7 +2,13 @@
   <div class="row">
     <div class="col-xs-4">
       <%= simple_form_for [@deck, @rating] do |f| %>
-        <%= f.input :score, collection: (1..5).to_a, label: "Rate your experience" %>
+        <%= f.input :score,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: (1..5).to_a %>
         <%= f.submit "Send your review" %>
       <% end %>
     </div>
