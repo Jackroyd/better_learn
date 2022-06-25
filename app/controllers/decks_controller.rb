@@ -22,6 +22,9 @@ class DecksController < ApplicationController
       end
     end
 
+    @decks = @decks.shuffle
+    @subjects = Deck.all.distinct.pluck(:subject).sort
+    @levels = Deck.all.distinct.pluck(:level).sort
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
