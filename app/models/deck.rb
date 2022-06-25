@@ -7,6 +7,9 @@ class Deck < ApplicationRecord
   validates :topic, inclusion: { in: %w[biology chemistry physics] }
   validates :level, inclusion: { in: %w[ks1 ks2 gcse] }
   validates :name, uniqueness: { scope: :user }
+  MAX_RATING = 5
+
+  validates :rating, numericality: { in: 0..MAX_RATING }
   accepts_nested_attributes_for :cards, allow_destroy: true, reject_if: :all_blank
 
   def self.by_sub_top_lev(subject = nil, topic = nil, level = nil)
