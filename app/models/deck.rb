@@ -5,6 +5,9 @@ class Deck < ApplicationRecord
   has_many :progress_log, dependent: :destroy
   validates :name, :subject, :level, presence: true
   validates :name, uniqueness: { scope: :user }
+  MAX_RATING = 5
+
+  validates :rating, numericality: { in: 0..MAX_RATING }
   accepts_nested_attributes_for :cards, allow_destroy: true, reject_if: :all_blank
 
   include PgSearch::Model

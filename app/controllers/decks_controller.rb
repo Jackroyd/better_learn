@@ -62,10 +62,16 @@ class DecksController < ApplicationController
     @deck = Deck.find(params[:id])
     @deck.update(deck_params)
     if @deck.save
+      render :show
       flash[:notice] = "Deck was updated"
       redirect_to deck_path(@deck)
     else
       render :edit
+    end
+    if @deck.update(rating: params[:deck][:rating])
+      @toast = :success
+    else
+      @toast = :warning
     end
   end
 
