@@ -1,3 +1,7 @@
+.profile-container {
+  padding: 2rem 0rem 2rem 4rem;
+}
+
 .profile-name {
   display: flex;
   align-items: center;
@@ -25,4 +29,80 @@
   width: fit-content;
   overflow-x: auto;
   margin-left: 10px;
+}
+
+.profile-devise-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.profile-devise-form {
+  border-radius: 16px;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.75);
+  width: 40%;
+  max-width: 348px;
+  padding: 1rem;
+  z-index: 10;
+  .profile-form-control {
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 12px;
+    padding: 8px;
+    font-size: 1.2rem;
+  }
+  fieldset {
+    align-items: flex-start;
+    .form-check-input {
+      border: 1.77 solid black;
+    }
+  }
+  .main-btn {
+    padding: 0;
+    font-size: 1.2rem;
+    height: 40px;
+    border-radius: 12px;
+  }
+  .form-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  a {
+    color: black;
+    &:hover {
+      color: rgb(54, 54, 54);
+    }
+  }
+}
+
+.profile-end-wrong-ans-container {
+  width: 73%;
+}
+
+.profile-deck-card {
+  min-width: 32%;
+  height: 160px;
+  background-color: white;
+  border: 1.77px solid black;
+  border-radius: 16px;
+  margin: 16px;
+  padding: 8px 16px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+    }
+}
+
+.profile-card-scroll {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  align-items: center;
+  min-height: 217px;
+}
+
+.profile-title {
+  margin-left: 16px;
 }
