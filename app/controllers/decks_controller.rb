@@ -1,10 +1,30 @@
 class DecksController < ApplicationController
   def index
-    if params[:query].present?
-      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level]).decks_search(params[:query])
+    if !(params[:query].blank?)
+      if params[:subject].blank? && params[:level].blank?
+        @decks = Deck.decks_search(params[:query])
+      elsif params[:subject].blank? && !(params[:level].blank?)
+        @decks = Deck.where(level: params[:level]).decks_search(params[:query])
+      elsif params[:level].blank? && !(params[:subject].blank?)
+        @decks = Deck.where(level: params[:subject]).decks_search(params[:query])
+      else
+        @decks = Deck.where(subject: params[:subject], level: params[:level]).decks_search(params[:query])
+      end
     else
-      @decks = Deck.by_sub_top_lev(params[:subject], params[:topic], params[:level])
+      if params[:subject].blank? && params[:level].blank?
+        @decks = Deck.all
+      elsif params[:subject].blank? && !(params[:level].blank?)
+        @decks = Deck.where(level: params[:level])
+      elsif params[:level].blank? && !(params[:subject].blank?)
+        @decks = Deck.where(subject: params[:subject])
+      else
+        @decks = Deck.where(subject: params[:subject], level: params[:level])
+      end
     end
+
+    @decks = @decks.shuffle
+    @subjects = Deck.all.distinct.pluck(:subject).sort
+    @levels = Deck.all.distinct.pluck(:level).sort
 
     respond_to do |format|
       format.html # Follow regular flow of Rails
@@ -69,6 +89,6 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :subject, :topic, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id, :_destroy])
+    params.require(:deck).permit(:name, :subject, :level, :location, :description, :user_id, cards_attributes: [:id, :question, :answer, :deck_id, :_destroy])
   end
 end

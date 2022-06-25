@@ -38,17 +38,12 @@
           %>
         </div>
         <div class="filters">
-          <%= select_tag :subject, options_for_select(['science', 'maths', 'history']),
+          <%= select_tag :subject, options_for_select(@subjects),
                                     include_blank: 'subject',
                                     data: {
                                       search_decks_target: 'filter',
                                       action: 'change->search-decks#filter' }%>
-          <%= select_tag :topic, options_for_select(['biology', 'chemistry', 'physics']),
-                                    include_blank: 'topic',
-                                    data: {
-                                      search_decks_target: 'filter',
-                                      action: 'change->search-decks#filter' }%>
-          <%= select_tag :level, options_for_select(['ks1', 'ks2', 'gsce']),
+          <%= select_tag :level, options_for_select(@levels),
                                     include_blank: 'level',
                                     data: {
                                       search_decks_target: 'filter',

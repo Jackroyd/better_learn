@@ -3,6 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+
 require('./nested-forms/addFields')
 require('./nested-forms/removeFields')
 require('./card-flip/cardFlip')

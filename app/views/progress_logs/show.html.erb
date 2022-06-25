@@ -1,7 +1,7 @@
 <div class="end-container">
   <div class="end-header">
       <h1>Great work! You knew <%= @true.count %> out of <%= @deck.cards.count %></h1>
-  </div>
+    </div>
   <div class="end-main-content">
     <div class="end-stats-container">
       <div class="stats-header">
@@ -9,15 +9,15 @@
       </div>
       <div class="end-stats">
         <h2 class="endq">You knew: </h2>
-        <h2 class="enda"><%= @true.count %> cards</h2>
+        <h2 class="enda"><%= @true.count %> card<%=@true.count==1 ? "" : "s" %></h2>
       </div>
       <div class="end-stats">
         <h2 class="endq">You didn't know: </h2>
-        <h2 class="enda"><%= @false.count %> cards</h2>
+        <h2 class="enda"><%= @false.count %> card<%=@false.count==1 ? "" : "s" %></h2>
       </div>
       <div class="end-stats">
         <h2 class="enda">You skipped: </h2>
-        <h2 class="endq"><%= @skip.count %> cards</h2>
+        <h2 class="endq"><%= @skip.count %> card<%=@skip.count==1 ? "" : "s" %></h2>
       </div>
     </div>
     <div class="end-card-container">
@@ -55,6 +55,30 @@
       Rate deck<%= render 'shared/stars', score: @deck.ratings.average(:rating) %>
     </div>
     <%= link_to "Replay Deck", deck_cards_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
-    <%= link_to "Share Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
+    <button type="button" class="main-btn" data-bs-toggle="modal" data-bs-target="#shareModal">
+      Share
+    </button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareModalLabel">Share this deck</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="copy-text">I just completed <%= @deck.name %>, follow this link to see if you can Learn Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
+        </div>
+        <div class="modal-footer" data-controller="share">
+          <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn" data-action="click->share#copy">Copy text</button>
+          <button type="button" class="btn" data-link="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>" data-action="click->share#link">Copy link</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

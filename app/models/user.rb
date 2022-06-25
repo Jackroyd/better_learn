@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :decks, dependent: :destroy
   has_many :ratings, dependent: :destroy
-  has_many :progress_logs
+  has_many :progress_logs, dependent: :destroy
   validates :first_name, :last_name, presence: true
 end

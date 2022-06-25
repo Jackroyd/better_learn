@@ -12,6 +12,7 @@
     "@rails/webpacker": "5.4.3",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
+    "counterup2": "^2.0.2",
     "jquery": "^3.6.0",
     "jquery-bar-rating": "^1.2.2",
     "stimulus": "^3.0.1",
