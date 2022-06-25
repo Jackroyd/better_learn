@@ -9,8 +9,8 @@
         <div class="deck-details">
           <%= f.input :name, as: :string, :input_html => { :id => 'detail-inputs' } %>
           <%= f.input :description, as: :text, :input_html => { :id => 'detail-inputs' } %>
-          <%= f.input :subject, collection: ['science', 'history', 'maths'], :input_html => { :id => 'detail-inputs' } %>
-          <%= f.input :level, collection: ['ks1', 'ks2', 'gcse'], :input_html => { :id => 'detail-inputs' }  %>
+          <%= f.input :subject, collection: @subjects, :input_html => { :id => 'detail-inputs' } %>
+          <%= f.input :level, collection: @levels, :input_html => { :id => 'detail-inputs' }  %>
         </div>
         <div class="new-cards">
           <fieldset>

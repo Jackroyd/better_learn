@@ -40,6 +40,8 @@ class DecksController < ApplicationController
 
   def new
     @deck = Deck.new
+    @subjects = Deck.all.distinct.pluck(:subject).sort
+    @levels = Deck.all.distinct.pluck(:level).sort
   end
 
   def create
@@ -66,11 +68,6 @@ class DecksController < ApplicationController
       redirect_to deck_path(@deck)
     else
       render :edit
-    end
-    if @deck.update(rating: params[:deck][:rating])
-      @toast = :success
-    else
-      @toast = :warning
     end
   end
 
