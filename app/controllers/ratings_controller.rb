@@ -5,18 +5,23 @@ class RatingsController < ApplicationController
   end
 
   def create
+    @deck = Deck.find(params[:deck_id])
     @rating = Rating.new(rating_params)
     @rating.user = current_user
+    @rating.deck = @deck
     if @rating.save
-      flash[:notice] = "Thanks"
+      flash[:notice] = "Deck rated"
+      redirect_to deck_path(@deck)
     else
       flash[:alert] = "Something went wrong."
+      render :new
     end
+
   end
 
   private
 
   def rating_params
-    params.require(:rating).permit(:rating, :deck_id)
+    params.require(:rating).permit(:score)
   end
 end
