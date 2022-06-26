@@ -16,6 +16,29 @@ a {
   align-items: center;
   height: 70vh;
   position: relative;
+  margin-bottom: 1rem;
+}
+
+.home-section-b {
+  height: 70vh;
+  position: relative;
+  margin-top: 60px;
+}
+.home-cards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.home-card {
+  width: 360px;
+  margin: 8px;
+  padding: 8px;
+  text-align: center;
+}
+
+.home-icon {
+  font-size: 5rem;
 }
 
 .main-title{
