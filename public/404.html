@@ -4,21 +4,23 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+  .learnbetter-default-error-page {
+    background-color: #FFC657;
+    color: #0E0000;
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: "Work Sans", "Helvetica", "sans-serif";
     margin: 0;
+    display: flex;
+    justify-content: center;
   }
 
-  .rails-default-error-page div.dialog {
+  .learnbetter-default-error-page div.dialog {
     width: 95%;
     max-width: 33em;
     margin: 4em auto 0;
   }
 
-  .rails-default-error-page div.dialog > div {
+  .learnbetter-default-error-page div.dialog > div {
     border: 1px solid #CCC;
     border-right-color: #999;
     border-left-color: #999;
@@ -31,13 +33,13 @@
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
 
-  .rails-default-error-page h1 {
+  .learnbetter-default-error-page h1 {
     font-size: 100%;
     color: #730E15;
     line-height: 1.5em;
   }
 
-  .rails-default-error-page div.dialog > p {
+  .learnbetter-default-error-page div.dialog > p {
     margin: 0 0 1em;
     padding: 1em;
     background-color: #F7F7F7;
@@ -51,17 +53,133 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .deck-card {
+  width: 40%;
+  height: 160px;
+  background-color: white;
+  border: 1.77px solid black;
+  border-radius: 16px;
+  margin: 16px;
+  padding: 8px 16px;
+  max-width: -webkit-fill-available;
+  transition: all .2s ease-in-out;
+  justify-content: center;
+}
+
+.deck-card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.deck-card-top {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40%;
+}
+
+.dc-top-left {
+  max-width: 50%;
+  margin-top: 4px;
+}
+
+.deck-title {
+  color: black;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.rating {
+  color: black;
+}
+
+i {
+  font-style: normal;
+  font-family: FontAwesome !important;
+}
+
+.deck-card-content {
+  width: 100%;
+  height: 70%;
+}
+
+.card-count {
+  color: rgba(0, 0, 0, 0.577);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card-description {
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.5rem;
+  height: 3rem;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+
+.deck-card-bottom {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  height: 20%;
+}
+
+.deck-cats {
+  background-color: white;
+  border: 1.77px solid black;
+  border-radius: 16px;
+  line-height: 1.5rem;
+  height: 1.5rem;
+  overflow: hidden;
+  color: black;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  margin: 0 4px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1s;
+  -webkit-box-orient: vertical;
+}
+
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body class="learnbetter-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="deck-card">
+    <div class="deck-card-container">
+      <div class="deck-card-top">
+      <div class="dc-top-left">
+        <h1 class="deck-title">Title</h1>
+      </div>
+      </div>
+      <div class="deck-card-content">
+        <p class="card-description">Unfortunately the page you were looking for is unavailable</p>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>
