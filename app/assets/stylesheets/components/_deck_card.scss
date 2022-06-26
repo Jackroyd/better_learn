@@ -101,4 +101,10 @@ i {
   justify-content: center;
   padding: 0 8px;
   margin: 0 4px;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1s;
+  -webkit-box-orient: vertical;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_23_181720) do
+ActiveRecord::Schema.define(version: 2022_06_25_150126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2022_06_23_181720) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
-    t.integer "rating", default: 0, null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
   end
 
@@ -66,7 +65,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_181720) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
+    t.integer "score"
     t.bigint "user_id", null: false
     t.bigint "deck_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -5,7 +5,7 @@
       <h1 class="deck-title"><%= deck.name %></h1>
       <h2 class="card-count"><%= "#{deck.cards.count} cards" %></h2>
     </div>
-      <div class="rating"><%= render 'shared/stars', score: deck.ratings.average(:rating) %></div>
+      <div class="rating"><%= render 'shared/stars', score: deck.ratings.average(:score) %></div>
       <% initials = "#{deck.user.first_name[0]}#{deck.user.last_name[0]}" %>
       <div class="avatar"> <span><%= initials.upcase %></span> </div>
     </div>

@@ -1,43 +1,90 @@
-<div class=container>
-  <div class="show-container">
-  <div class="col-6">
-    <br>
-    <h1 style="font-size:50px;"><%= @deck.name %></h1>
-    <br>
-    <h3><%= @deck.description %></h3>
-    <br>
-     <div class="decks-btn">
-        <%= link_to "Play Deck", deck_cards_path(@deck), class: "main-btn", id: "main-btn-deck" %>
-      </div>
-      <br>
-        <div class="decks-btn">
-          <%= link_to "Share Deck", new_deck_path, class: "main-btn", id: "main-btn-deck" %>
-        </div>
-      <br>
+<div class="show-container">
+  <div class="left-container">
+    <div class="show-text-content">
+      <h1><%= @deck.name %></h1>
+      <p><%= @deck.description %></p>
+    </div>
+    <div class="show-btn-container">
+      <%= link_to "Play Deck", deck_cards_path(@deck), class: "main-btn", id: "main-btn-deck" %>
+      <div class="main-btn" type="button" data-bs-toggle="modal" data-bs-target="#shareModal">Share</div>
       <% if current_user == @deck.user %>
-        <div class="decks-btn">
-          <%= link_to "Edit Deck", edit_deck_path(@deck), class: "main-btn", id: "main-btn-deck" %>
-        </div>
-      <% end %>
-      <br>
-      <% if current_user == @deck.user %>
-      <div class="decks-btn">
+        <%= link_to "Edit Deck", edit_deck_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
         <%= link_to "Delete Deck",
-              deck_path(@deck),
-              method: :delete,
-              class: "delete-btn",
-              data: { confirm: "Are you sure?" } %>
-      </div>
+                deck_path(@deck),
+                method: :delete,
+                class: "delete-btn",
+                data: { confirm: "Are you sure?" } %>
       <% end %>
-      <br>
+      <%= render 'shared/star_rating', deck: @deck%>
+    </div>
   </div>
-
-  <div class="col-6">
-    <%= render 'shared/preview_card', deck: @deck, cards: @cards%>
-    <br>
-    <%= render 'shared/stats_card', deck: @deck%>
-
+  <div class="right-container">
+    <div class="card-preview-container">
+      <div class="carousel">
+        <ul class="carousel__list">
+          <% @cards.take(3).each_with_index do |card, index| %>
+          <li class="carousel__item" data-pos= "<%= index %>">
+            <div class="scene scene--card">
+              <div class="flash-card">
+                <div class="card__face card__face--front">
+                  <div class="fc-content">
+                    <h2 class="fc-header"> <%= @deck.name %></h2>
+                    <p class="fc-qa"><strong>Q. </strong><%= card.question %></p>
+                    <div class="fc-bottom">
+                      <div class="flip-image"><%= image_tag "flip.svg" %></div>
+                      <div class="counter">
+                      <%= "#{index+1}/#{@deck.cards.count}" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="show-stats-container">
+      <h1>Deck Statistics</h1>
+      <div class="show-stats">
+        <div class="stat">
+          <h2><%= @total_plays %></h2>
+          <h4>Total Plays</h4>
+        </div>
+        <div class="stat">
+          <h2><%= @total_users %></h2>
+          <h4>Number of People</h4>
+        </div>
+        <div class="stat">
+          <h2><%= @correct_rate.nan? ? "-" : @correct_rate.round(0)%><%= @correct_rate.nan? ? "" : "%" %></h2>
+          <h4>Average Success</h4>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
-<%= render 'shared/deck_rating', deck: @deck%>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareModalLabel">Share this deck</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="copy-text">Need to learn <%= @deck.name %>? follow this link to Learn it Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
+        </div>
+        <div class="modal-footer" data-controller="share">
+          <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn" data-action="click->share#copy">Copy text</button>
+          <button type="button" class="btn" data-link="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>" data-action="click->share#link">Copy link</button>
+        </div>
+      </div>
+    </div>
+  </div>
