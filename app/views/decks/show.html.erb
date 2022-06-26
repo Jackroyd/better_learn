@@ -6,7 +6,7 @@
     </div>
     <div class="show-btn-container">
       <%= link_to "Play Deck", deck_cards_path(@deck), class: "main-btn", id: "main-btn-deck" %>
-      <div class="main-btn" data-bs-toggle="modal" data-bs-target="#shareModal">Share</div>
+      <div class="main-btn" type="button" data-bs-toggle="modal" data-bs-target="#shareModal">Share</div>
       <% if current_user == @deck.user %>
         <%= link_to "Edit Deck", edit_deck_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
         <%= link_to "Delete Deck",
@@ -49,16 +49,16 @@
       <h1>Deck Statistics</h1>
       <div class="show-stats">
         <div class="stat">
-          <h4>stat title</h4>
-          <h2>stat</h2>
+          <h2><%= @total_plays %></h2>
+          <h4>Total Plays</h4>
         </div>
         <div class="stat">
-          <h4>stat title</h4>
-          <h2>stat</h2>
+          <h2><%= @total_users %></h2>
+          <h4>Number of People</h4>
         </div>
         <div class="stat">
-          <h4>stat title</h4>
-          <h2>stat</h2>
+          <h2><%= @correct_rate.nan? ? "-" : @correct_rate.round(0)%><%= @correct_rate.nan? ? "" : "%" %></h2>
+          <h4>Average Success</h4>
         </div>
       </div>
     </div>
@@ -73,12 +73,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="shareModalLabel">Share this deck</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p class="copy-text">I just completed <%= @deck.name %>, follow this link to see if you can Learn Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
+          <p class="copy-text">Need to learn <%= @deck.name %>? follow this link to Learn it Better. <a href="<%= "www.letslearnbetter.com/decks/#{@deck.id}" %>"><%= "www.letslearnbetter.com/decks/#{@deck.id}" %></a></p>
         </div>
         <div class="modal-footer" data-controller="share">
           <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
