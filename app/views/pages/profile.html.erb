@@ -33,7 +33,7 @@
             <div class="statistics">
               <p>Decks played: <%= @progress_logs.where(user_id: current_user).count %></p>
               <p>Cards answered: <%= @progress_log_details %></p>
-              <p>Success rate: <%= @total_cards %>%</p>
+              <p>Success rate: <%= "#{@total_cards.nan? ? '-' : @total_cards} #{@total_cards.nan? ? '' : '%'}" %></p>
             </div>
             <div class="main-btn profile-button">
               <%= link_to "Update your profile", edit_user_registration_path %>
