@@ -74,7 +74,16 @@
 .fc-qa {
   font-size: 1.2rem;
   font-weight: 400;
-  text-align: justify
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  text-overflow:ellipsis;
+  line-height: 1.5rem;
+  height: 7.5rem;
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 }
 
 .fc-bottom {
