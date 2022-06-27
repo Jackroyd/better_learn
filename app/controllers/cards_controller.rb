@@ -1,8 +1,9 @@
 class CardsController < ApplicationController
   def index
     @deck = Deck.find(params[:deck_id])
-    @cards = @deck.cards
     @progress_log = ProgressLog.create(user_id: current_user.id, deck_id: @deck.id)
+    @progress_logs = ProgressLog.where(user_id: current_user.id, deck_id: @deck.id)
+    @cards = @deck.cards
     @cards.each do |card|
       ProgressLogDetail.create(card_id: card.id, progress_log_id: @progress_log.id)
     end
