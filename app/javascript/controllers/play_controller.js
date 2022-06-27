@@ -5,6 +5,11 @@ export default class extends Controller {
 
   connect() {
     console.log("play connected");
+    const active_card = document.querySelector(".active");
+    const bar = document.querySelector(".bar-inner")
+    const percent = (parseFloat(active_card.dataset.start) / parseFloat(active_card.dataset.length)) * 100
+    console.log(percent);
+    bar.style.width = `${percent}%`;
   }
 
   next() {
@@ -35,7 +40,11 @@ export default class extends Controller {
         prevText.classList.remove("hidden")
       }
     });
-
+    const active_card = document.querySelector(".active");
+    const bar = document.querySelector(".bar-inner")
+    const percent = (parseFloat(active_card.dataset.start) / parseFloat(active_card.dataset.length)) * 100
+    console.log(percent);
+    bar.style.width = `${percent}%`;
   }
 
   prev() {
@@ -65,5 +74,10 @@ export default class extends Controller {
         prevText.classList.add("hidden")
       }
     });
+    const active_card = document.querySelector(".active");
+    const bar = document.querySelector(".bar-inner")
+    const percent = (parseFloat(active_card.dataset.start) / parseFloat(active_card.dataset.length)) * 100
+    console.log(percent);
+    bar.style.width = `${percent}%`;
   }
 }

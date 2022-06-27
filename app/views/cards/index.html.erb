@@ -1,10 +1,12 @@
 <div class="play-container" data-controller="flip-button">
   <div class="progress-bar-container">
+    <div class="bar-outer"></div>
+    <div class="bar-inner"></div>
   </div>
   <div class="carousel">
     <ul class="carousel__list">
       <% @cards.each_with_index do |card, index| %>
-      <li class="carousel__item <%= index == 0 ? 'active' : '' %> <%= index == @cards.length-1 ? 'end' : '' %> <%= index > 2 || index < -2 ? 'hidden' : '' %> <%= index == @cards.length-2 ? 'penultimate' : '' %> <%= index == 1 ? 'second' : '' %> <%= index == 0 ? 'first' : '' %>" data-pos= "<%= index %>">
+      <li class="carousel__item <%= index == 0 ? 'active' : '' %> <%= index == @cards.length-1 ? 'end' : '' %> <%= index > 2 || index < -2 ? 'hidden' : '' %> <%= index == @cards.length-2 ? 'penultimate' : '' %> <%= index == 1 ? 'second' : '' %> <%= index == 0 ? 'first' : '' %>" data-pos= "<%= index %>" data-start="<%= index + 1 %>" data-length=<%= @cards.length %>>
         <div class="scene scene--card">
           <div id="flipCard<%= card.id %>" class="flash-card" data-flip-button-target="card" data-action="click->flip-button#stats">
             <div class="card__face card__face--front">
