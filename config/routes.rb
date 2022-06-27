@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
     resources :decks do
       resources :cards, only: [ :new, :create, :edit, :update, :index ]
+      resources :ratings, only: [:new, :create]
     end
   resources :progress_log_details, only: [:update]
   resources :progress_logs, only: [:show]

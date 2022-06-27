@@ -103,7 +103,7 @@ puts "Completed! #{deck_count} decks created"
 puts "creating ratings"
 
 Deck.all.each do |deck|
-  Rating.create(user_id: user_list.sample, deck_id: deck.id, rating: rand(1..5))
+  Rating.create(user_id: user_list.sample, deck_id: deck.id, score: rand(1..5))
 end
 
 puts "ratings created"
