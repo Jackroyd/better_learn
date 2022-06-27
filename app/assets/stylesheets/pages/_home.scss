@@ -14,7 +14,7 @@ a {
 .home-section {
   display: flex;
   align-items: center;
-  height: 70vh;
+  height: 60vh;
   position: relative;
   margin-bottom: 1rem;
 }
@@ -49,6 +49,10 @@ a {
   width: 50%;
   position: absolute;
   top: 140px;
+  .second-title {
+    line-height: 2.5rem;
+    letter-spacing: 1px;
+  }
 }
 
 .home-text h1 {

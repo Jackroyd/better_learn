@@ -52,7 +52,7 @@
   </div>
   <div class="end-bottom">
     <div class="stars">
-      Rate deck<%= render 'shared/stars', score: @deck.ratings.average(:score) %>
+      <%= render 'shared/star_rating', deck: @deck%>
     </div>
     <%= link_to "Replay Deck", deck_cards_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
     <button type="button" class="main-btn" data-bs-toggle="modal" data-bs-target="#shareModal">
