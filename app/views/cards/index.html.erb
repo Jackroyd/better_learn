@@ -29,7 +29,7 @@
                 <% progress_log_details = ProgressLogDetail.find_by(progress_log_id: @progress_log.id, card_id: card.id) %>
                   <div class="incorrect" data-controller="progress" data-progress-incorrect-value="false" data-progress-details-value="<%= progress_log_details.id %>" data-progress-cards-value="<%= @cards %>" data-progress-deck-value="<%= @deck.id %>" data-progress-log-value="<%= @progress_log.id %>" data-action="click->progress#incorrect">
                     <p class="dont-before">Don't Know</p>
-                    <p class="dont-after hidden">&#10004;</p>
+                    <p class="dont-after hidden">?</p>
                   </div>
                   <div class="correct" data-controller="progress" data-progress-correct-value="true"  data-progress-details-value="<%= progress_log_details.id %>" data-progress-cards-value="<%= @cards %>" data-progress-deck-value="<%= @deck.id %>" data-progress-log-value="<%= @progress_log.id %>" data-action="click->progress#correct">
                     <p class="know-before">Know it!</p>
