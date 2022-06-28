@@ -22,7 +22,7 @@ class DecksController < ApplicationController
       end
     end
 
-    @decks = @decks.take(42)
+    @decks = @decks.last(42).sort_by { |d| d.created_at }.reverse!
     @subjects = Deck.all.distinct.pluck(:subject).sort
     @levels = Deck.all.distinct.pluck(:level).sort
 
