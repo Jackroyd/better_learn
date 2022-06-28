@@ -29,9 +29,7 @@ url = "https://www.flashcardmachine.com/flashcards.html"
 content = URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
 doc = Nokogiri::HTML(content)
 
-doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
-  next if index.odd?
-
+doc.search(".fcStaticSubject ul li a").each do |sub|
   href = sub['href']
   puts "begining #{href} decks"
   suburl = "https://www.flashcardmachine.com/#{href}"
@@ -42,11 +40,14 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
   end
   subdoc = Nokogiri::HTML(subcontent)
 
-  num_break = rand(2..10)
+  num_break = rand(5..15)
+  sub_count = 0
   subdoc.search(".fcStaticSubject ul li a").each_with_index do |set, i|
-    break if i > num_break
-    next if i.odd?
+    break if sub_count > num_break
+    next if i < 30
+    next if i % 10 != 0
 
+    sub_count += 1
     href = set['href']
     seturl = "https://www.flashcardmachine.com/#{href}"
     begin
@@ -55,8 +56,9 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
       next
     end
     setdoc = Nokogiri::HTML(setcontent)
-    name = setdoc.search('.form_item')[0].search('.field').inner_text.gsub!(/\d|-|\.|\//, "")
+    name = setdoc.search('.form_item')[0].search('.field').inner_text
     break if name.blank?
+
     name = name.strip.capitalize
     puts name
     description = setdoc.search('.form_item')[1].search('.field').inner_text
@@ -64,15 +66,15 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
     level = setdoc.search('.form_item')[4].search('.field').inner_text
     user = user_list.sample
     begin
-      Deck.create!(name: name, description: description, subject: subject, level: level, user_id: user)
+      deck=Deck.create!(name: name, description: description, subject: subject, level: level, user_id: user)
     rescue ActiveRecord::RecordInvalid
       next
     end
     deck_count += 1
-    break_num = rand(8..16)
+    break_num = rand(10..30)
+    card_count = 0
     setdoc.search('tr')[1..].each_with_index do |card, ind|
       break if ind > break_num
-      next if ind.odd?
 
       card.search("td tr td b").each_slice(2) do |q, a|
         begin
@@ -90,8 +92,10 @@ doc.search(".fcStaticSubject ul li a").each_with_index do |sub, index|
         rescue ActiveRecord::RecordInvalid
           next
         end
+        card_count += 1
       end
     end
+    puts "#{card_count} cards created"
     puts "created #{deck_count} decks"
   end
 end
@@ -107,5 +111,23 @@ Deck.all.each do |deck|
 end
 
 puts "ratings created"
+
+# create progress logs
+
+puts "creating progress logs"
+
+User.all.each do |user|
+  5.times do
+    deck = Deck.all.sample
+    ProgressLog.create(deck_id: deck.id, user_id: user.id)
+    cards = deck.cards
+    cards.each do |card|
+      correct = [true, false].sample
+      ProgressLogDetail.create(card_id: card.id, progress_log_id: ProgressLog.last.id, correct: correct)
+    end
+  end
+end
+
+puts "progress logs created"
 
 puts "all seeding completed"

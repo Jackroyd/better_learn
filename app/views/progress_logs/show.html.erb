@@ -54,10 +54,10 @@
     <div class="stars">
       <%= render 'shared/star_rating', deck: @deck%>
     </div>
-    <%= link_to "Replay Deck", deck_cards_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
     <button type="button" class="main-btn" data-bs-toggle="modal" data-bs-target="#shareModal">
       Share
     </button>
+    <%= link_to "Replay Deck", deck_cards_path(@deck), class: "delete-btn", id: "main-btn-deck" %>
   </div>
 
   <!-- Modal -->
@@ -66,7 +66,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="shareModalLabel">Share this deck</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

@@ -22,7 +22,7 @@ class DecksController < ApplicationController
       end
     end
 
-    @decks = @decks.shuffle
+    @decks = @decks.take(42)
     @subjects = Deck.all.distinct.pluck(:subject).sort
     @levels = Deck.all.distinct.pluck(:level).sort
 
