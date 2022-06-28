@@ -10,6 +10,8 @@ export default class extends Controller {
     const cards = e.target.closest(".correct").dataset.progressCardsValue;
     const progress_log = e.target.closest(".correct").dataset.progressLogValue;
     const deck_id = e.target.closest(".correct").dataset.progressDeckValue;
+    const correct = e.target.closest(".correct")
+    const incorrect = e.target.closest(".fc-bottom").querySelector(".incorrect")
     const data = {log_id: log_id, do_they_know: do_they_know, cards: cards, progress_log: progress_log, deck_id: deck_id};
     const putMethod = {
       method: 'PUT',
@@ -30,6 +32,8 @@ export default class extends Controller {
     .then(knowAfter.classList.remove("hidden"))
     .then(dontBefore.classList.remove("hidden"))
     .then(dontAfter.classList.add("hidden"))
+    .then(correct.style.backgroundColor = "#2eaa2e")
+    .then(incorrect.style.backgroundColor = "white")
     .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
     .catch(err => console.log(err));
   }
@@ -41,6 +45,8 @@ export default class extends Controller {
     const cards = e.target.closest(".incorrect").dataset.progressCardsValue;
     const progress_log = e.target.closest(".incorrect").dataset.progressLogValue;
     const deck_id = e.target.closest(".incorrect").dataset.progressDeckValue;
+    const incorrect = e.target.closest(".incorrect")
+    const correct = e.target.closest(".fc-bottom").querySelector(".correct")
     // console.log(do_they_know);
     // console.log(log_id);
     // console.log(cards);
@@ -64,6 +70,8 @@ export default class extends Controller {
     .then(dontAfter.classList.remove("hidden"))
     .then(knowBefore.classList.remove("hidden"))
     .then(knowAfter.classList.add("hidden"))
+    .then(incorrect.style.backgroundColor = "#fe9d02")
+    .then(correct.style.backgroundColor = "white")
     // .then(response => response.json())
     .then(data => console.log(data)) // Manipulate the data retrieved back, if we want to do something with it
     .catch(err => console.log(err));

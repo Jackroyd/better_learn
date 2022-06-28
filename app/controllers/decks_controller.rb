@@ -37,7 +37,7 @@ class DecksController < ApplicationController
     @rating = Rating.new
     @cards = @deck.cards
     @total_plays = ProgressLog.where(deck_id: @deck.id).count
-    @total_users = ProgressLog.where(deck_id: @deck.id).uniq.pluck(:user_id).count
+    @total_users = ProgressLog.where(deck_id: @deck.id).pluck(:user_id).uniq.count
     progress_logs = ProgressLog.where(deck_id: @deck.id).pluck(:id)
     @all_non_skipped = ProgressLogDetail
                        .where(progress_log_id: progress_logs, correct: [true, false]).count
