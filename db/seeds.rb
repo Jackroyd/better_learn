@@ -45,7 +45,7 @@ doc.search(".fcStaticSubject ul li a").each do |sub|
   subdoc.search(".fcStaticSubject ul li a").each_with_index do |set, i|
     break if sub_count > num_break
     next if i < 30
-    next if i % 5 != 0
+    next if i % 10 != 0
 
     sub_count += 1
     href = set['href']
