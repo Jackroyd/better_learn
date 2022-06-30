@@ -126,8 +126,13 @@
     height: 100%;
   }
 
-  .prev-text, .next-text {
+  .prev-text {
     width: 40%;
+  }
+
+  .next-text {
+    width: 40%;
+    text-align: right;
   }
 
   h1 {
