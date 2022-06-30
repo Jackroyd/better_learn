@@ -9,7 +9,11 @@ class CardsController < ApplicationController
       ProgressLogDetail.create(card_id: card.id, progress_log_id: @progress_log.id)
     end
     if @progress_logs.count > 1
+     begin
       @cards = @cards.sort_by { |c| ProgressLogDetail.find_by(card_id: c.id, progress_log_id: @last_log.id).correct ? 1 : 0 }
+     rescue NoMethodError
+      @cards = @deck.cards
+     end
     else
       @cards = @deck.cards
     end
