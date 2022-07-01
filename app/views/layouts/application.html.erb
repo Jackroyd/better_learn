@@ -2,7 +2,6 @@
 <html>
   <head>
     <%= favicon_link_tag %>
-    <title>Learn Better</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,6 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
 
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
