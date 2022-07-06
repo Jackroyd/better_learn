@@ -84,3 +84,13 @@
     }
   }
 }
+
+
+@media (max-width: 600px) {
+  .devise-header {
+    display: none;
+  }
+  .devise-form {
+    width: 100%;
+  }
+}

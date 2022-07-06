@@ -118,3 +118,32 @@ a {
   }
 
 }
+
+@media (max-width: 600px) {
+  .home-section {
+    display: flex;
+    align-items: center;
+    height: 44vh;
+    position: unset;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .home-text {
+    text-align: center;
+    position: unset;
+  }
+  .home-section-b {
+    margin-top: 0;
+  }
+  .home-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .home-btn {
+    position: unset;
+  }
+}
