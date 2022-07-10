@@ -86,7 +86,24 @@
 
 @media (min-width: 100px) and (max-width: 440px) {
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .decks-btn {
+    width: 100%;
+  }
+
+  .decks-banner {
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .decks-btn .main-btn {
+      width: 100%;
+      font-size: 1.3rem;
+  }
+
+  .deck-card {
+    margin: 0;
   }
 }
 
