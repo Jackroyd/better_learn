@@ -118,3 +118,36 @@ a {
   }
 
 }
+
+@media (max-width: 600px) {
+  .home-section {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    position: unset;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+  .home-text {
+    text-align: center;
+    position: unset;
+  }
+  .home-section-b {
+    display: none;
+  }
+  .home-cards {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+  .home-btn {
+    position: unset;
+    width: 100%;
+  }
+  .main-btn {
+    width: 100%;
+  }
+}

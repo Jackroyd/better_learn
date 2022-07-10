@@ -1,10 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
+  <div class="container-fluid" data-controller="mobnav">
     <%= link_to root_path, class: "navbar-logo" do %>
       <span>LearnBetter</span>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-action="click->mobnav#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -41,6 +41,21 @@
           </li>
         <% end %>
       </ul>
+    </div>
+    <div class="mobile-nav hidden">
+        <% if user_signed_in? %>
+          <%= link_to "Learn", root_path, class: "nav-link", id: "nav-link"%>
+          <%= link_to "Search", decks_path, class: "nav-link", id: "nav-link"%>
+          <%= link_to "Create", new_deck_path, class: "nav-link", id: "nav-link" %>
+          <%= link_to "Profile Page", profile_path, class: "nav-link", id: "nav-link" %>
+          <% @last_log = ProgressLog.where(user_id: current_user.id).last %>
+          <% @last_log = @last_log.nil? ? Deck.last.id : @last_log.deck_id %>
+          <% @deck = Deck.find(@last_log) %>
+          <%= link_to "Last deck", deck_path(@deck), class: "nav-link", id: "nav-link" %>
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link", id: "nav-link" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path, class: "nav-link" , id: "nav-link" %>
+        <% end %>
     </div>
   </div>
 </div>
