@@ -130,3 +130,76 @@
     }
   }
 }
+
+@media (max-width: 600px) {
+  .end-container{
+    padding: 1rem;
+    height: unset;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .end-header {
+    margin-right: 1rem;
+    h1 {
+      font-size: 2rem;
+    }
+  }
+  .end-main-content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 0;
+  }
+  .end-stats-container {
+    width: 100%;
+  }
+  .end-card-container {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  .carousel__item {
+    width: 100%;
+    height: 100%;
+  }
+
+  .end-wrong-ans-container {
+    width: 100%;
+    .scene {
+      width: 100%;
+    }
+    .flash-card {
+      width: 100%;
+    }
+    flex-direction: column;
+    overflow-x: unset;
+  }
+
+
+  .carousel__list {
+    display: flex;
+    list-style: none;
+    position: relative;
+    width: 100%;
+    height: 370px;
+    justify-content: center;
+    perspective: 300px;
+    margin-top: 3rem;
+    padding: 1rem;
+  }
+  .end-bottom {
+    flex-direction: column;
+    justify-content: space-between;
+    .stars p {
+      display: none;
+    }
+    height: 24vh;
+    margin: 0;
+    .delete-btn, .main-btn {
+      margin: 0;
+      width: 66%;
+    }
+  }
+
+
+}
