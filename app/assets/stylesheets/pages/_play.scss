@@ -185,9 +185,10 @@
 
 @media (max-width: 600px) {
   .play-container {
-    overflow: scroll;
+    overflow-y: scroll;
     height: 93vh;
     margin-top: 0;
+    overflow-x: hidden;
   }
 
   .carousel__item {
