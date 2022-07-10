@@ -120,6 +120,10 @@ a {
 }
 
 @media (max-width: 600px) {
+  .container {
+    height: 93vh;
+    overflow: hidden;
+  }
   .home-section {
     display: flex;
     align-items: center;

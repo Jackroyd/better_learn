@@ -185,7 +185,9 @@
 
 @media (max-width: 600px) {
   .play-container {
-    overflow: hidden;
+    overflow: scroll;
+    height: 93vh;
+    margin-top: 0;
   }
 
   .carousel__item {
@@ -220,6 +222,10 @@
   }
   .play-bottom {
     align-items: flex-start;
+    height: 30vh;
+    .play-btns{
+      width: 10%;
+    }
   }
   .prev-text {
     display: none;
