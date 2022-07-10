@@ -111,3 +111,26 @@
   }
 
 }
+
+@media (max-width: 600px) {
+  .show-container {
+    display:flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: unset;
+    padding: 1rem;
+  }
+
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .right-container {
+    display: none;
+  }
+}
