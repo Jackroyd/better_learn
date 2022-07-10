@@ -84,7 +84,10 @@
 
 
 
-@media (min-width: 100px) and (max-width: 440px) {
+@media (min-width: 100px) and (max-width: 600px) {
+  .index-container {
+    margin: 1rem;
+  }
   .cards {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
@@ -108,11 +111,6 @@
 }
 
 
-@media (min-width: 440px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
 
 @media (min-width: 900px) {
   .cards {

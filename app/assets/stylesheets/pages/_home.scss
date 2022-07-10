@@ -123,7 +123,7 @@ a {
   .home-section {
     display: flex;
     align-items: center;
-    height: 44vh;
+    height: 100vh;
     position: unset;
     margin-bottom: 1rem;
     justify-content: space-around;
@@ -134,7 +134,7 @@ a {
     position: unset;
   }
   .home-section-b {
-    margin-top: 0;
+    display: none;
   }
   .home-cards {
     display: flex;
@@ -145,5 +145,9 @@ a {
   }
   .home-btn {
     position: unset;
+    width: 100%;
+  }
+  .main-btn {
+    width: 100%;
   }
 }
