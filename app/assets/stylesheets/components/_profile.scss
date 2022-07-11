@@ -137,3 +137,43 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 1rem;
+    .profile-devise-content {
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-devise-form {
+      width: 100%;
+    }
+    .profile-end-wrong-ans-container {
+      width: 100%;
+      h1 {
+        margin-top: 1rem;
+      }
+    }
+  }
+  .profile-name{
+    .avatar {
+      min-height: 80px;
+      min-width: 80px;
+      height: 80px;
+      width: 80px;
+      font-size: 2.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+  .profile-card-scroll {
+    min-height: unset;
+    flex-direction: column;
+    overflow-x: unset;
+    .deck-card {
+      width: 100%;
+      margin: 1rem;
+    }
+  }
+}
