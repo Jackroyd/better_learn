@@ -25,80 +25,97 @@ Deck.destroy_all
 puts "old decks destroyed"
 deck_count = 0
 puts "creating decks"
-url = "https://www.flashcardmachine.com/flashcards.html"
-content = URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
-doc = Nokogiri::HTML(content)
 
-doc.search(".fcStaticSubject ul li a").each do |sub|
-  href = sub['href']
-  puts "begining #{href} decks"
-  suburl = "https://www.flashcardmachine.com/#{href}"
-  begin
-    subcontent = URI.open(suburl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
-  rescue OpenURI::HTTPError
-    next
-  end
-  subdoc = Nokogiri::HTML(subcontent)
-
-  num_break = rand(5..15)
-  sub_count = 0
-  subdoc.search(".fcStaticSubject ul li a").each_with_index do |set, i|
-    break if sub_count > num_break
-    next if i < 30
-    next if i % 10 != 0
-
-    sub_count += 1
-    href = set['href']
-    seturl = "https://www.flashcardmachine.com/#{href}"
-    begin
-      setcontent = URI.open(seturl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
-    rescue OpenURI::HTTPError
-      next
-    end
-    setdoc = Nokogiri::HTML(setcontent)
-    name = setdoc.search('.form_item')[0].search('.field').inner_text
-    break if name.blank?
-
-    name = name.strip.capitalize
-    puts name
-    description = setdoc.search('.form_item')[1].search('.field').inner_text
-    subject = setdoc.search('.form_item')[3].search('.field').inner_text
-    level = setdoc.search('.form_item')[4].search('.field').inner_text
-    user = user_list.sample
-    begin
-      deck=Deck.create!(name: name, description: description, subject: subject, level: level, user_id: user)
-    rescue ActiveRecord::RecordInvalid
-      next
-    end
-    deck_count += 1
-    break_num = rand(10..30)
-    card_count = 0
-    setdoc.search('tr')[1..].each_with_index do |card, ind|
-      break if ind > break_num
-
-      card.search("td tr td b").each_slice(2) do |q, a|
-        begin
-          question = q.inner_text
-        rescue NoMethodError
-          next
-        end
-        begin
-          answer = a.inner_text
-        rescue NoMethodError
-          next
-        end
-        begin
-          Card.create!(question: question, answer: answer, deck_id: Deck.last.id)
-        rescue ActiveRecord::RecordInvalid
-          next
-        end
-        card_count += 1
-      end
-    end
-    puts "#{card_count} cards created"
-    puts "created #{deck_count} decks"
+# -------- test seeding --------------
+5.times do 
+  name = Faker::Educator.subject
+  description = Faker::Quote.famous_last_words
+  subject = Faker::Educator.subject
+  level = "Easy"
+  user = user_list.sample
+  Deck.create!(name: name, description: description, subject: subject, level: level, user_id: user)
+  10.times do
+    question = Faker::Quote.famous_last_words
+    answer = Faker::Quote.famous_last_words
+    Card.create!(question: question, answer: answer, deck_id: Deck.last.id)
   end
 end
+
+# ------ proper seeding --------------
+# url = "https://www.flashcardmachine.com/flashcards.html"
+# content = URI.open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+# doc = Nokogiri::HTML(content)
+
+# doc.search(".fcStaticSubject ul li a").each do |sub|
+#   href = sub['href']
+#   puts "begining #{href} decks"
+#   suburl = "https://www.flashcardmachine.com/#{href}"
+#   begin
+#     subcontent = URI.open(suburl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+#   rescue OpenURI::HTTPError
+#     next
+#   end
+#   subdoc = Nokogiri::HTML(subcontent)
+
+#   num_break = rand(5..15)
+#   sub_count = 0
+#   subdoc.search(".fcStaticSubject ul li a").each_with_index do |set, i|
+#     break if sub_count > num_break
+#     next if i < 30
+#     next if i % 10 != 0
+
+#     sub_count += 1
+#     href = set['href']
+#     seturl = "https://www.flashcardmachine.com/#{href}"
+#     begin
+#       setcontent = URI.open(seturl, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE, 'User-Agent' => 'opera')
+#     rescue OpenURI::HTTPError
+#       next
+#     end
+#     setdoc = Nokogiri::HTML(setcontent)
+#     name = setdoc.search('.form_item')[0].search('.field').inner_text
+#     break if name.blank?
+
+#     name = name.strip.capitalize
+#     puts name
+#     description = setdoc.search('.form_item')[1].search('.field').inner_text
+#     subject = setdoc.search('.form_item')[3].search('.field').inner_text
+#     level = setdoc.search('.form_item')[4].search('.field').inner_text
+#     user = user_list.sample
+#     begin
+#       deck=Deck.create!(name: name, description: description, subject: subject, level: level, user_id: user)
+#     rescue ActiveRecord::RecordInvalid
+#       next
+#     end
+#     deck_count += 1
+#     break_num = rand(10..30)
+#     card_count = 0
+#     setdoc.search('tr')[1..].each_with_index do |card, ind|
+#       break if ind > break_num
+
+#       card.search("td tr td b").each_slice(2) do |q, a|
+#         begin
+#           question = q.inner_text
+#         rescue NoMethodError
+#           next
+#         end
+#         begin
+#           answer = a.inner_text
+#         rescue NoMethodError
+#           next
+#         end
+#         begin
+#           Card.create!(question: question, answer: answer, deck_id: Deck.last.id)
+#         rescue ActiveRecord::RecordInvalid
+#           next
+#         end
+#         card_count += 1
+#       end
+#     end
+#     puts "#{card_count} cards created"
+#     puts "created #{deck_count} decks"
+#   end
+# end
 
 puts "Completed! #{deck_count} decks created"
 

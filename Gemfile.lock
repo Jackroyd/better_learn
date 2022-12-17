@@ -103,7 +103,7 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
-    faker (2.21.0)
+    faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     font-awesome-sass (5.6.1)
@@ -271,6 +271,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-20
+  arm64-darwin-21
   x86_64-darwin-21
   x86_64-linux
 
@@ -281,7 +282,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
-  faker
+  faker (~> 3.0.0)
   font-awesome-sass (~> 5.6.1)
   hotwire-rails
   importmap-rails (~> 1.1, >= 1.1.2)

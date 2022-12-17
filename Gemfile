@@ -65,7 +65,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # for seeds
-gem 'faker'
+gem 'faker', '~> 3.0.0'
 gem 'nokogiri'
 
 # to search
